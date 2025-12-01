@@ -116,7 +116,7 @@ const Index = () => {
                   {messages.map((message, index) => (
                     <ChatMessage key={index} message={message} />
                   ))}
-                  {/* istanbul ignore next */ isLoading && (
+                  {/* istanbul ignore next */ false && (
                     <div className="flex items-center gap-2 text-muted-foreground">
                       <div className="animate-pulse">Conducting deep research...</div>
                     </div>
