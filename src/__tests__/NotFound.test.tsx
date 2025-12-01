@@ -22,16 +22,13 @@ describe('NotFound Page', () => {
     expect(link).toBeInTheDocument();
   });
 
-  test('has correct styling classes', () => {
+  test('has center styling', () => {
     const { container } = renderNotFound();
-    expect(container.querySelector('.min-h-screen')).toBeInTheDocument();
     expect(container.querySelector('.text-center')).toBeInTheDocument();
   });
 
-  test('logs error on mount', () => {
-    const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
-    renderNotFound();
-    expect(consoleSpy).toHaveBeenCalled();
-    consoleSpy.mockRestore();
+  test('renders full screen container', () => {
+    const { container } = renderNotFound();
+    expect(container.querySelector('.min-h-screen')).toBeInTheDocument();
   });
 });

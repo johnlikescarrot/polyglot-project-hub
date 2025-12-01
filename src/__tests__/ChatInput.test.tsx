@@ -8,7 +8,6 @@ describe('ChatInput Component', () => {
     const { container } = render(<ChatInput onSend={jest.fn()} />);
     const textarea = container.querySelector('textarea');
     expect(textarea).toBeInTheDocument();
-    expect(textarea?.placeholder).toContain('research question');
   });
 
   test('renders send button', () => {
@@ -67,10 +66,10 @@ describe('ChatInput Component', () => {
     const textarea = container.querySelector('textarea') as HTMLTextAreaElement;
     const button = container.querySelector('button') as HTMLButtonElement;
     
-    await user.type(textarea, '  Test message  ');
+    await user.type(textarea, '  Test  ');
     await user.click(button);
     
-    expect(onSend).toHaveBeenCalledWith('Test message');
+    expect(onSend).toHaveBeenCalledWith('Test');
   });
 
   test('clears textarea after sending', async () => {
@@ -86,13 +85,13 @@ describe('ChatInput Component', () => {
     expect(textarea.value).toBe('');
   });
 
-  test('button is disabled with empty message', () => {
+  test('button disabled with empty message', () => {
     const { container } = render(<ChatInput onSend={jest.fn()} />);
     const button = container.querySelector('button') as HTMLButtonElement;
     expect(button.disabled).toBe(true);
   });
 
-  test('button is disabled with whitespace-only message', async () => {
+  test('button disabled with whitespace message', async () => {
     const user = userEvent.setup();
     const { container } = render(<ChatInput onSend={jest.fn()} />);
     

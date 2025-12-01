@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1764570315707" clover="3.2.0">
-  <project timestamp="1764570315707" name="All files">
-    <metrics statements="370" coveredstatements="76" conditionals="194" coveredconditionals="20" methods="114" coveredmethods="17" elements="678" coveredelements="113" complexity="0" loc="370" ncloc="370" packages="6" files="19" classes="19"/>
+<coverage generated="1764570486618" clover="3.2.0">
+  <project timestamp="1764570486618" name="All files">
+    <metrics statements="370" coveredstatements="86" conditionals="194" coveredconditionals="35" methods="114" coveredmethods="20" elements="678" coveredelements="141" complexity="0" loc="370" ncloc="370" packages="6" files="19" classes="19"/>
     <package name="src">
       <metrics statements="11" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="App.tsx" path="/home/runner/workspace/src/App.tsx">
@@ -20,21 +20,21 @@
       </file>
     </package>
     <package name="src.components">
-      <metrics statements="8" coveredstatements="6" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="2" methods="2" coveredmethods="2"/>
       <file name="NavLink.tsx" path="/home/runner/workspace/src/components/NavLink.tsx">
-        <metrics statements="8" coveredstatements="6" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="18" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="18" count="4" type="cond" truecount="2" falsecount="2"/>
         <line num="26" count="1" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.components.research">
-      <metrics statements="104" coveredstatements="23" conditionals="56" coveredconditionals="14" methods="37" coveredmethods="7"/>
+      <metrics statements="104" coveredstatements="31" conditionals="56" coveredconditionals="27" methods="37" coveredmethods="8"/>
       <file name="ChatInput.tsx" path="/home/runner/workspace/src/components/research/ChatInput.tsx">
         <metrics statements="16" coveredstatements="16" conditionals="10" coveredconditionals="9" methods="4" coveredmethods="4"/>
         <line num="1" count="1" type="stmt"/>
@@ -42,28 +42,28 @@
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
-        <line num="12" count="51" type="stmt"/>
-        <line num="14" count="51" type="stmt"/>
+        <line num="12" count="43" type="stmt"/>
+        <line num="14" count="43" type="stmt"/>
         <line num="15" count="4" type="cond" truecount="3" falsecount="1"/>
         <line num="16" count="4" type="stmt"/>
         <line num="17" count="4" type="stmt"/>
-        <line num="21" count="51" type="stmt"/>
-        <line num="22" count="37" type="cond" truecount="4" falsecount="0"/>
+        <line num="21" count="43" type="stmt"/>
+        <line num="22" count="29" type="cond" truecount="4" falsecount="0"/>
         <line num="23" count="1" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
-        <line num="28" count="51" type="stmt"/>
-        <line num="32" count="37" type="stmt"/>
+        <line num="28" count="43" type="stmt"/>
+        <line num="32" count="29" type="stmt"/>
       </file>
       <file name="ChatMessage.tsx" path="/home/runner/workspace/src/components/research/ChatMessage.tsx">
-        <metrics statements="8" coveredstatements="0" conditionals="13" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
+        <metrics statements="8" coveredstatements="8" conditionals="13" coveredconditionals="13" methods="1" coveredmethods="1"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="15" count="5" type="stmt"/>
       </file>
       <file name="KeyboardShortcuts.tsx" path="/home/runner/workspace/src/components/research/KeyboardShortcuts.tsx">
         <metrics statements="17" coveredstatements="0" conditionals="5" coveredconditionals="0" methods="6" coveredmethods="0"/>
@@ -91,9 +91,9 @@
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
-        <line num="11" count="12" type="stmt"/>
-        <line num="13" count="4" type="stmt"/>
-        <line num="32" count="28" type="stmt"/>
+        <line num="11" count="15" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="32" count="35" type="stmt"/>
       </file>
       <file name="QuickActions.tsx" path="/home/runner/workspace/src/components/research/QuickActions.tsx">
         <metrics statements="9" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
@@ -400,10 +400,10 @@
       </file>
       <file name="utils.ts" path="/home/runner/workspace/src/lib/utils.ts">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="4" type="stmt"/>
-        <line num="2" count="4" type="stmt"/>
-        <line num="4" count="4" type="stmt"/>
-        <line num="5" count="188" type="stmt"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="2" count="5" type="stmt"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="5" count="221" type="stmt"/>
       </file>
     </package>
     <package name="src.pages">

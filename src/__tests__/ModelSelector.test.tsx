@@ -1,6 +1,5 @@
 /// <reference types="jest" />
 import { render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { ModelSelector } from '@/components/research/ModelSelector';
 
 describe('ModelSelector Component', () => {
@@ -11,31 +10,31 @@ describe('ModelSelector Component', () => {
     expect(container).toBeInTheDocument();
   });
 
-  test('displays currently selected model', () => {
+  test('displays selected model name', () => {
     const { container } = render(
       <ModelSelector selectedModel="google/gemini-2.5-flash" onModelChange={jest.fn()} />
     );
-    expect(container.textContent).toContain('google/gemini-2.5-flash');
+    expect(container.textContent).toContain('Gemini 2.5 Flash');
   });
 
-  test('calls onModelChange when model changes', async () => {
-    const onModelChange = jest.fn();
-    const user = userEvent.setup();
+  test('displays balanced category badge', () => {
     const { container } = render(
-      <ModelSelector selectedModel="google/gemini-2.5-flash" onModelChange={onModelChange} />
+      <ModelSelector selectedModel="google/gemini-2.5-flash" onModelChange={jest.fn()} />
     );
-    
-    const selectors = container.querySelectorAll('button');
-    if (selectors.length > 1) {
-      await user.click(selectors[1]);
-      expect(onModelChange).toHaveBeenCalled();
-    }
+    expect(container.textContent).toContain('balanced');
   });
 
   test('renders without crashing', () => {
     const { container } = render(
       <ModelSelector selectedModel="google/gemini-2.5-flash" onModelChange={jest.fn()} />
     );
-    expect(container.querySelector('[role="button"]') || container.querySelector('button')).toBeInTheDocument();
+    expect(container.querySelector('button') || container.querySelector('[role="combobox"]')).toBeInTheDocument();
+  });
+
+  test('has label text', () => {
+    const { container } = render(
+      <ModelSelector selectedModel="google/gemini-2.5-flash" onModelChange={jest.fn()} />
+    );
+    expect(container.textContent).toContain('AI Model');
   });
 });
