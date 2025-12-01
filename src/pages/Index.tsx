@@ -1,11 +1,118 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useEffect } from "react";
+import { ModelSelector } from "@/components/research/ModelSelector";
+import { ChatMessage } from "@/components/research/ChatMessage";
+import { ChatInput } from "@/components/research/ChatInput";
+import { QuickActions } from "@/components/research/QuickActions";
+import { ResearchHistory } from "@/components/research/ResearchHistory";
+import { KeyboardShortcuts } from "@/components/research/KeyboardShortcuts";
+import { UsageStats } from "@/components/research/UsageStats";
+import { useStreamingChat } from "@/hooks/useStreamingChat";
+import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Trash2, Sparkles } from "lucide-react";
+import { toast } from "sonner";
 
 const Index = () => {
+  const [selectedModel, setSelectedModel] = useState("google/gemini-2.5-flash");
+  const [sessionStartTime] = useState(Date.now());
+
+  const { messages, isLoading, sendMessage, clearMessages } = useStreamingChat({
+    model: selectedModel,
+    onError: (error) => {
+      toast.error(error);
+    },
+  });
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/5">
+      <div className="container mx-auto px-4 py-8 max-w-7xl">
+        {/* Header */}
+        <header className="mb-8 text-center">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <Sparkles className="h-8 w-8 text-primary" />
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              AI Research Assistant
+            </h1>
+            <KeyboardShortcuts onNewChat={clearMessages} />
+          </div>
+          <p className="text-muted-foreground text-lg">
+            Multi-model AI research powered by Gemini & GPT-5
+          </p>
+        </header>
+
+        <div className="grid lg:grid-cols-[300px,1fr] gap-6">
+          {/* Sidebar */}
+          <aside className="space-y-4">
+            <div className="bg-card border rounded-lg p-4 shadow-sm">
+              <ModelSelector selectedModel={selectedModel} onModelChange={setSelectedModel} />
+            </div>
+
+            {messages.length === 0 ? (
+              <QuickActions onQuickQuery={sendMessage} disabled={isLoading} />
+            ) : (
+              <>
+                <ResearchHistory messages={messages} />
+                <UsageStats messages={messages} startTime={sessionStartTime} />
+                <Button
+                  variant="outline"
+                  className="w-full"
+                  onClick={clearMessages}
+                  disabled={isLoading}
+                >
+                  <Trash2 className="h-4 w-4 mr-2" />
+                  Clear Chat
+                </Button>
+              </>
+            )}
+
+            <div className="bg-card border rounded-lg p-4 shadow-sm">
+              <h3 className="font-semibold mb-2">Model Categories</h3>
+              <div className="space-y-2 text-sm text-muted-foreground">
+                <div>
+                  <strong className="text-primary">Premium:</strong> Best reasoning & accuracy
+                </div>
+                <div>
+                  <strong className="text-accent">Balanced:</strong> Speed & intelligence
+                </div>
+                <div>
+                  <strong className="text-muted">Fast:</strong> Quick responses
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          {/* Chat Area */}
+          <main className="bg-card border rounded-lg shadow-lg flex flex-col h-[calc(100vh-220px)]">
+            <ScrollArea className="flex-1 p-6">
+              {messages.length === 0 ? (
+                <div className="flex items-center justify-center h-full text-center">
+                  <div className="max-w-md">
+                    <Sparkles className="h-16 w-16 mx-auto mb-4 text-primary opacity-50" />
+                    <h2 className="text-2xl font-semibold mb-2">Start Your Research</h2>
+                    <p className="text-muted-foreground">
+                      Ask any question and get comprehensive research from cutting-edge AI models
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {messages.map((message, index) => (
+                    <ChatMessage key={index} message={message} />
+                  ))}
+                  {isLoading && (
+                    <div className="flex items-center gap-2 text-muted-foreground">
+                      <div className="animate-pulse">Researching...</div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </ScrollArea>
+
+            <div className="border-t p-4 bg-muted/20">
+              <ChatInput onSend={sendMessage} disabled={isLoading} />
+            </div>
+          </main>
+        </div>
       </div>
     </div>
   );
