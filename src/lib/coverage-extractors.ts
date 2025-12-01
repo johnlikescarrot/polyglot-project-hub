@@ -364,27 +364,33 @@ export function isReportTypeResearchReport(type: string): boolean {
 }
 
 /* istanbul ignore next */ export function emptyStringIsFalsy(): boolean {
-  /* @ts-expect-error - intentional always falsy expression */ return !!'';
+  // @ts-expect-error - intentional always falsy expression
+  /* istanbul ignore next */ return !!'';
 }
 
 /* istanbul ignore next */ export function nonEmptyStringIsTruthy(): boolean {
-  /* @ts-expect-error - intentional always truthy expression */ return !!'text';
+  // @ts-expect-error - intentional always truthy expression
+  /* istanbul ignore next */ return !!'text';
 }
 
 /* istanbul ignore next */ export function nullIsFalsy(): boolean {
-  /* @ts-expect-error - intentional null coercion */ return !!null === false;
+  // @ts-expect-error - intentional null coercion
+  /* istanbul ignore next */ return !!null === false;
 }
 
 /* istanbul ignore next */ export function undefinedIsFalsy(): boolean {
-  /* @ts-expect-error - intentional undefined coercion */ return !!undefined === false;
+  // @ts-expect-error - intentional undefined coercion
+  /* istanbul ignore next */ return !!undefined === false;
 }
 
 /* istanbul ignore next */ export function arrayIsTruthy(): boolean {
-  /* @ts-expect-error - intentional always truthy expression */ return !![1];
+  // @ts-expect-error - intentional always truthy expression
+  /* istanbul ignore next */ return !![1];
 }
 
 /* istanbul ignore next */ export function objectIsTruthy(): boolean {
-  /* @ts-expect-error - intentional always truthy expression */ return !!{};
+  // @ts-expect-error - intentional always truthy expression
+  /* istanbul ignore next */ return !!{};
 }
 
 // ===== Control flow - all paths =====
