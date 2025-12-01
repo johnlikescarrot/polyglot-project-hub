@@ -386,3 +386,35 @@ export function removeListenerAtIndex(arr: any[], index: number): void {
 export function shouldRemoveListener(index: number): boolean {
   return index >= 0;
 }
+
+// ===== Missing listener functions =====
+export function findListenerIndex<T>(listeners: T[], listener: T): number {
+  return listeners.indexOf(listener);
+}
+
+export function shouldCallListener(shouldCall: boolean, listener: () => void): void {
+  if (shouldCall) {
+    listener();
+  }
+}
+
+// ===== Message validation =====
+export function validateMessageForSend(message: string, disabled?: boolean): boolean {
+  const trimmed = message.trim();
+  return trimmed.length > 0 && !disabled;
+}
+
+export function shouldDisableSendButton(message: string, disabled?: boolean): boolean {
+  return disabled === true || message.trim().length === 0;
+}
+
+// ===== Slider validation =====
+export function validateSliderValue(value: number, min: number, max: number): boolean {
+  return value >= min && value <= max;
+}
+
+export function clampSliderValue(value: number, min: number, max: number): number {
+  if (value < min) return min;
+  if (value > max) return max;
+  return value;
+}
