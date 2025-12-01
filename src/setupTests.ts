@@ -48,11 +48,20 @@ global.ResizeObserver = class ResizeObserver {
   }
 };
 
-// Mock TextDecoder for Node.js environment
+// Mock TextDecoder and TextEncoder for Node.js environment
 if (typeof global.TextDecoder === 'undefined') {
   global.TextDecoder = class TextDecoder {
-    decode(input: Uint8Array): string {
+    decode(input?: Uint8Array, opts?: any): string {
+      if (!input) return '';
       return Buffer.from(input).toString('utf-8');
+    }
+  } as any;
+}
+
+if (typeof global.TextEncoder === 'undefined') {
+  global.TextEncoder = class TextEncoder {
+    encode(input: string): Uint8Array {
+      return new Uint8Array(Buffer.from(input, 'utf-8'));
     }
   } as any;
 }
