@@ -96,6 +96,7 @@ export function handleTotalWordsChange(value: number, settings: any): any {
 }
 
 export function handleReportTypeChange(value: string, settings: any): any {
+  /* istanbul ignore next */ if (!value || !settings) return settings;
   return { ...settings, reportType: value };
 }
 
