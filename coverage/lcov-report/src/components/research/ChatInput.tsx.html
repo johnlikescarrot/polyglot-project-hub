@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">61.11% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>18/18</span>
+                <span class='fraction'>11/18</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/6</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>1/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">58.82% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>17/17</span>
+                <span class='fraction'>10/17</span>
             </div>
         
             
@@ -124,27 +124,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">161x</span>
+<span class="cline-any cline-yes">268x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">161x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">161x</span>
-<span class="cline-any cline-yes">31x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">268x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">161x</span>
+<span class="cline-any cline-yes">268x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">45x</span>
+<span class="cline-any cline-yes">268x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -175,17 +175,17 @@ interface ChatInputProps {
 export const ChatInput = ({ onSend, disabled }: ChatInputProps) =&gt; {
   const [message, setMessage] = useState("");
 &nbsp;
-  const handleSend = () =&gt; {
-    <span class="missing-if-branch" title="else path not taken" >E</span>if (validateMessageForSend(message, disabled)) {
-      onSend(message.trim());
-      setMessage("");
+  const handleSend = <span class="fstat-no" title="function not covered" >() =</span>&gt; {
+<span class="cstat-no" title="statement not covered" >    if (validateMessageForSend(message, disabled)) {</span>
+<span class="cstat-no" title="statement not covered" >      onSend(message.trim());</span>
+<span class="cstat-no" title="statement not covered" >      setMessage("");</span>
     }
   };
 &nbsp;
-  const handleKeyPress = (e: KeyboardEvent&lt;HTMLTextAreaElement&gt;) =&gt; {
-    if (e.key === "Enter" &amp;&amp; !e.shiftKey) {
-      e.preventDefault();
-      handleSend();
+  const handleKeyPress = <span class="fstat-no" title="function not covered" >(e</span>: KeyboardEvent&lt;HTMLTextAreaElement&gt;) =&gt; {
+<span class="cstat-no" title="statement not covered" >    if (e.key === "Enter" &amp;&amp; !e.shiftKey) {</span>
+<span class="cstat-no" title="statement not covered" >      e.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >      handleSend();</span>
     }
   };
 &nbsp;
@@ -193,7 +193,7 @@ export const ChatInput = ({ onSend, disabled }: ChatInputProps) =&gt; {
     &lt;div className="flex gap-2"&gt;
       &lt;Textarea
         value={message}
-        onChange={(e) =&gt; setMessage(e.target.value)}
+        onChange={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >setMessage(e.target.value)}</span>
         onKeyDown={handleKeyPress}
         placeholder="Ask your research question..."
         className="min-h-[60px] resize-none"
@@ -217,7 +217,7 @@ export const ChatInput = ({ onSend, disabled }: ChatInputProps) =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-01T11:30:07.771Z
+                at 2025-12-01T11:33:14.486Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
