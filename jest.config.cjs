@@ -7,6 +7,7 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1',
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
     '^react-markdown$': '<rootDir>/src/__mocks__/react-markdown.tsx',
+    '^import\\.meta\\.env$': '<rootDir>/src/__mocks__/import-meta-env.js',
   },
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
   collectCoverageFrom: [
@@ -32,12 +33,6 @@ module.exports = {
     '^.+\\.tsx?$': ['ts-jest', {
       tsconfig: 'tsconfig.jest.json',
       isolatedModules: true,
-      useESM: false,
     }],
-  },
-  globals: {
-    'ts-jest': {
-      useESM: false,
-    },
   },
 };

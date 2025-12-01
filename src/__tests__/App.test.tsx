@@ -1,4 +1,13 @@
 /// <reference types="jest" />
+jest.mock('@/hooks/useStreamingChat', () => ({
+  useStreamingChat: jest.fn(() => ({
+    messages: [],
+    isLoading: false,
+    sendMessage: jest.fn(),
+    clearMessages: jest.fn(),
+  })),
+}));
+
 import { render } from '@testing-library/react';
 import App from '@/App';
 

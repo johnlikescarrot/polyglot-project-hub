@@ -1,16 +1,16 @@
 /// <reference types="jest" />
-import { render } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
-import Index from '@/pages/Index';
-
 jest.mock('@/hooks/useStreamingChat', () => ({
-  useStreamingChat: () => ({
+  useStreamingChat: jest.fn(() => ({
     messages: [],
     isLoading: false,
     sendMessage: jest.fn(),
     clearMessages: jest.fn(),
-  }),
+  })),
 }));
+
+import { render } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
+import Index from '@/pages/Index';
 
 describe('Index Page', () => {
   test('renders without error', () => {

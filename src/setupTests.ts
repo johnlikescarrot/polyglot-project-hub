@@ -34,10 +34,16 @@ global.ResizeObserver = class ResizeObserver {
   unobserve() {}
 } as any;
 
-// Mock import.meta
-Object.defineProperty(import.meta, 'env', {
-  value: {
-    VITE_SUPABASE_URL: 'https://test.supabase.co',
-    VITE_SUPABASE_PUBLISHABLE_KEY: 'test-key',
-  },
-});
+// Mock import.meta.env for tests
+(global as any).import = {
+  meta: {
+    env: {
+      VITE_SUPABASE_URL: 'https://test.supabase.co',
+      VITE_SUPABASE_PUBLISHABLE_KEY: 'test-key',
+      MODE: 'test',
+      DEV: false,
+      PROD: false,
+      SSR: false,
+    }
+  }
+};

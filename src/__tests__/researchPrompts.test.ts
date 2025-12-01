@@ -1,83 +1,123 @@
 /// <reference types="jest" />
 import { ResearchPrompts, PromptConfig } from '@/lib/researchPrompts';
 
-describe('ResearchPrompts Class', () => {
+describe('ResearchPrompts - comprehensive', () => {
   describe('generateMCPToolSelectionPrompt', () => {
-    test('generates prompt with query', () => {
-      const prompt = ResearchPrompts.generateMCPToolSelectionPrompt('test query', []);
-      expect(prompt).toContain('test query');
+    test('generates valid prompt with query', () => {
+      const prompt = ResearchPrompts.generateMCPToolSelectionPrompt('AI trends 2025', []);
+      expect(prompt).toContain('AI trends 2025');
+      expect(prompt).toContain('RESEARCH QUERY');
     });
 
-    test('generates prompt with tools info', () => {
-      const tools = [{ name: 'tool1' }, { name: 'tool2' }];
+    test('includes tools info in JSON', () => {
+      const tools = [{ name: 'web_search', description: 'Search' }, { name: 'api_call', description: 'API' }];
       const prompt = ResearchPrompts.generateMCPToolSelectionPrompt('query', tools);
-      expect(prompt).toContain('tool1');
-      expect(prompt).toContain('tool2');
+      expect(prompt).toContain('web_search');
+      expect(prompt).toContain('AVAILABLE TOOLS');
     });
 
-    test('generates prompt with max tools parameter', () => {
-      const prompt = ResearchPrompts.generateMCPToolSelectionPrompt('query', [], 5);
-      expect(prompt).toContain('5');
-    });
-
-    test('uses default max tools of 3', () => {
+    test('specifies correct max tools default', () => {
       const prompt = ResearchPrompts.generateMCPToolSelectionPrompt('query', []);
-      expect(prompt).toContain('3');
+      expect(prompt).toContain('EXACTLY 3 tools');
     });
 
-    test('returns valid JSON format hint', () => {
+    test('respects custom max tools parameter', () => {
+      const prompt = ResearchPrompts.generateMCPToolSelectionPrompt('query', [], 7);
+      expect(prompt).toContain('EXACTLY 7 tools');
+    });
+
+    test('includes selection criteria', () => {
+      const prompt = ResearchPrompts.generateMCPToolSelectionPrompt('query', []);
+      expect(prompt).toContain('SELECTION CRITERIA');
+      expect(prompt).toContain('Choose tools');
+    });
+
+    test('specifies JSON output format', () => {
       const prompt = ResearchPrompts.generateMCPToolSelectionPrompt('query', []);
       expect(prompt).toContain('selected_tools');
       expect(prompt).toContain('selection_reasoning');
+      expect(prompt).toContain('relevance_score');
     });
   });
 
   describe('generateMCPResearchPrompt', () => {
-    test('generates research prompt with query', () => {
-      const prompt = ResearchPrompts.generateMCPResearchPrompt('test query', []);
-      expect(prompt).toContain('test query');
+    test('generates research prompt with full query', () => {
+      const query = 'What are quantum computing breakthroughs?';
+      const prompt = ResearchPrompts.generateMCPResearchPrompt(query, []);
+      expect(prompt).toContain(query);
+      expect(prompt).toContain('RESEARCH QUERY');
     });
 
-    test('generates prompt with selected tools', () => {
-      const tools = ['tool1', 'tool2'];
+    test('includes all available tools', () => {
+      const tools = ['web_search', 'academic_db', 'news_api'];
       const prompt = ResearchPrompts.generateMCPResearchPrompt('query', tools);
-      expect(prompt).toContain('tool1');
-      expect(prompt).toContain('tool2');
+      tools.forEach(tool => expect(prompt).toContain(tool));
     });
 
-    test('includes research instructions', () => {
-      const prompt = ResearchPrompts.generateMCPResearchPrompt('query', []);
-      expect(prompt).toContain('INSTRUCTIONS');
-    });
-
-    test('includes available tools section', () => {
+    test('includes comprehensive instructions', () => {
       const prompt = ResearchPrompts.generateMCPResearchPrompt('query', ['tool1']);
+      expect(prompt).toContain('INSTRUCTIONS');
+      expect(prompt).toContain('Use the available tools');
+      expect(prompt).toContain('gather relevant information');
+    });
+
+    test('specifies error handling', () => {
+      const prompt = ResearchPrompts.generateMCPResearchPrompt('query', ['tool1']);
+      expect(prompt).toContain('tool call fails');
+      expect(prompt).toContain('alternative');
+    });
+
+    test('handles empty tools array', () => {
+      const prompt = ResearchPrompts.generateMCPResearchPrompt('query', []);
       expect(prompt).toContain('AVAILABLE TOOLS');
     });
 
-    test('returns string format', () => {
-      const prompt = ResearchPrompts.generateMCPResearchPrompt('query', []);
-      expect(typeof prompt).toBe('string');
+    test('handles single tool', () => {
+      const prompt = ResearchPrompts.generateMCPResearchPrompt('query', ['single_tool']);
+      expect(prompt).toContain('single_tool');
+    });
+
+    test('handles multiple tools', () => {
+      const tools = ['tool1', 'tool2', 'tool3', 'tool4', 'tool5'];
+      const prompt = ResearchPrompts.generateMCPResearchPrompt('query', tools);
+      expect(prompt).toContain('tool1,');
+      expect(prompt).toContain('tool5');
     });
   });
 
   describe('PromptConfig Interface', () => {
-    test('accepts minimal config', () => {
-      const config: PromptConfig = { question: 'test' };
-      expect(config.question).toBe('test');
+    test('accepts minimal config with only question', () => {
+      const config: PromptConfig = { question: 'What is AI?' };
+      expect(config.question).toBe('What is AI?');
+      expect(config.context).toBeUndefined();
     });
 
-    test('accepts full config', () => {
+    test('accepts full config with all fields', () => {
       const config: PromptConfig = {
-        question: 'test',
-        context: 'context',
+        question: 'What is AI?',
+        context: 'Current AI landscape',
         reportFormat: 'apa',
-        totalWords: 1000,
+        totalWords: 2000,
         tone: 'formal',
         language: 'english',
         reportSource: 'web',
       };
-      expect(config.totalWords).toBe(1000);
+      expect(config.question).toBe('What is AI?');
+      expect(config.context).toBe('Current AI landscape');
+      expect(config.reportFormat).toBe('apa');
+      expect(config.totalWords).toBe(2000);
+      expect(config.tone).toBe('formal');
+      expect(config.language).toBe('english');
+      expect(config.reportSource).toBe('web');
+    });
+
+    test('supports partial config', () => {
+      const config: PromptConfig = {
+        question: 'test',
+        reportFormat: 'mla',
+        totalWords: 1500,
+      };
+      expect(config).toBeTruthy();
     });
   });
 });
