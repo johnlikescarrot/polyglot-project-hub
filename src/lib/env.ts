@@ -11,31 +11,37 @@ export function getEnv(): Environment {
     return cachedEnv;
   }
 
+  cachedEnv = loadEnv();
+  return cachedEnv;
+}
+
+function loadEnv(): Environment {
   // Jest test environment mock
   if (typeof process !== 'undefined' && process.env.NODE_ENV === 'test') {
-    cachedEnv = {
+    return {
       VITE_SUPABASE_URL: 'https://test.supabase.co',
       VITE_SUPABASE_PUBLISHABLE_KEY: 'test-key-123',
     };
-    return cachedEnv;
   }
 
   // Vite production environment - lazy access at runtime
   try {
-    const fn = new Function('return import.meta.env');
-    const env = fn();
-    cachedEnv = {
+    const env = getImportMetaEnv();
+    return {
       VITE_SUPABASE_URL: env?.VITE_SUPABASE_URL || '',
       VITE_SUPABASE_PUBLISHABLE_KEY: env?.VITE_SUPABASE_PUBLISHABLE_KEY || '',
     };
   } catch {
-    cachedEnv = {
+    return {
       VITE_SUPABASE_URL: '',
       VITE_SUPABASE_PUBLISHABLE_KEY: '',
     };
   }
+}
 
-  return cachedEnv;
+function getImportMetaEnv() {
+  const fn = new Function('return import.meta.env');
+  return fn();
 }
 
 export function resetEnv(): void {
