@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.3% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/13</span>
+                <span class='fraction'>0/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/6</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.3% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>12/13</span>
+                <span class='fraction'>0/13</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -92,57 +92,57 @@
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// Pure functions extracted from use-toast hook
 &nbsp;
-export function shouldRemoveListener(index: number): boolean {
-  return index &gt; -1;
+<span class="cstat-no" title="statement not covered" >export function <span class="fstat-no" title="function not covered" >s</span>houldRemoveListener(</span>index: number): boolean {
+<span class="cstat-no" title="statement not covered" >  return index &gt; -1;</span>
 }
 &nbsp;
-export function findListenerIndex&lt;T&gt;(listeners: T[], listener: T): number {
-  return listeners.indexOf(listener);
+<span class="cstat-no" title="statement not covered" >export function <span class="fstat-no" title="function not covered" >f</span>indListenerIndex&lt;</span>T&gt;(listeners: T[], listener: T): number {
+<span class="cstat-no" title="statement not covered" >  return listeners.indexOf(listener);</span>
 }
 &nbsp;
-export function removeListenerFromArray&lt;T&gt;(listeners: T[], index: number): T[] {
-  const newListeners = [...listeners];
-  if (index &gt; -1) {
-    newListeners.splice(index, 1);
+<span class="cstat-no" title="statement not covered" >export function <span class="fstat-no" title="function not covered" >r</span>emoveListenerFromArray&lt;</span>T&gt;(listeners: T[], index: number): T[] {
+  const newListeners = <span class="cstat-no" title="statement not covered" >[...listeners];</span>
+<span class="cstat-no" title="statement not covered" >  if (index &gt; -1) {</span>
+<span class="cstat-no" title="statement not covered" >    newListeners.splice(index, 1);</span>
   }
-  return newListeners;
+<span class="cstat-no" title="statement not covered" >  return newListeners;</span>
 }
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >addToRemoveQueue(</span>toastId: string, TOAST_REMOVE_DELAY: number): ReturnType&lt;typeof setTimeout&gt; {
+<span class="cstat-no" title="statement not covered" >export function <span class="fstat-no" title="function not covered" >a</span>ddToRemoveQueue(</span>toastId: string, TOAST_REMOVE_DELAY: number): ReturnType&lt;typeof setTimeout&gt; {
 <span class="cstat-no" title="statement not covered" >  return setTimeout(<span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
     // Dispatch remove action
   }, TOAST_REMOVE_DELAY);
 }
 &nbsp;
-export function handleToastDismiss(toastId?: string): { shouldRemoveAll: boolean } {
-  return { shouldRemoveAll: !toastId };
+<span class="cstat-no" title="statement not covered" >export function <span class="fstat-no" title="function not covered" >h</span>andleToastDismiss(</span>toastId?: string): { shouldRemoveAll: boolean } {
+<span class="cstat-no" title="statement not covered" >  return { shouldRemoveAll: !toastId };</span>
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -151,7 +151,7 @@ export function handleToastDismiss(toastId?: string): { shouldRemoveAll: boolean
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-01T10:37:55.215Z
+                at 2025-12-01T10:41:06.221Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
