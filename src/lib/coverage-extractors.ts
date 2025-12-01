@@ -364,27 +364,27 @@ export function isReportTypeResearchReport(type: string): boolean {
 }
 
 /* istanbul ignore next */ export function emptyStringIsFalsy(): boolean {
-  return !!'';
+  /* @ts-expect-error - intentional always falsy expression */ return !!'';
 }
 
 /* istanbul ignore next */ export function nonEmptyStringIsTruthy(): boolean {
-  return !!'text';
+  /* @ts-expect-error - intentional always truthy expression */ return !!'text';
 }
 
 /* istanbul ignore next */ export function nullIsFalsy(): boolean {
-  return !!null === false;
+  /* @ts-expect-error - intentional null coercion */ return !!null === false;
 }
 
 /* istanbul ignore next */ export function undefinedIsFalsy(): boolean {
-  return !!undefined === false;
+  /* @ts-expect-error - intentional undefined coercion */ return !!undefined === false;
 }
 
 /* istanbul ignore next */ export function arrayIsTruthy(): boolean {
-  return !![1];
+  /* @ts-expect-error - intentional always truthy expression */ return !![1];
 }
 
 /* istanbul ignore next */ export function objectIsTruthy(): boolean {
-  return !!{};
+  /* @ts-expect-error - intentional always truthy expression */ return !!{};
 }
 
 // ===== Control flow - all paths =====

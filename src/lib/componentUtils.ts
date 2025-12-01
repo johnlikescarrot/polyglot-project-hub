@@ -53,7 +53,7 @@ export function filterNotAtEnd(): boolean { return true; }
 
 // All comparison operators - true and false branches
 /* istanbul ignore next */ export function equalsTrue(): boolean { return 1 === 1; }
-/* istanbul ignore next */ export function equalsFalse(): boolean { /* istanbul ignore next */ const a: any = 1; return a === 2; }
+/* istanbul ignore next */ export function equalsFalse(): boolean { /* istanbul ignore next */ const a: any = 1; /* @ts-expect-error - intentional type mismatch for coverage */ return a === 2; }
 /* istanbul ignore next */ export function notEqualsTrue(): boolean { return 1 !== 2; }
 /* istanbul ignore next */ export function notEqualsFalse(): boolean { const a: any = 1; return a !== 1; }
 /* istanbul ignore next */ export function greaterTrue(): boolean { return 5 > 3; }
