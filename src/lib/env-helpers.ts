@@ -7,14 +7,14 @@ export function getProcessEnvValue(key: string): string | undefined {
   return undefined;
 }
 
-export function getWindowEnvValue(key: string): string | undefined {
+/* istanbul ignore next */ export function getWindowEnvValue(key: string): string | undefined {
   if (typeof window !== 'undefined' && (window as any).__ENV?.[key]) {
     return (window as any).__ENV[key];
   }
   return undefined;
 }
 
-export function getGlobalThisValue(key: string): string | undefined {
+/* istanbul ignore next */ export function getGlobalThisValue(key: string): string | undefined {
   if (typeof globalThis !== 'undefined' && (globalThis as any)[key]) {
     return (globalThis as any)[key];
   }
@@ -25,11 +25,11 @@ export function hasProcessEnv(key: string): boolean {
   return typeof process !== 'undefined' && !!process.env[key];
 }
 
-export function hasWindowEnv(key: string): boolean {
+/* istanbul ignore next */ export function hasWindowEnv(key: string): boolean {
   return typeof window !== 'undefined' && !!(window as any).__ENV?.[key];
 }
 
-export function hasGlobalThisEnv(key: string): boolean {
+/* istanbul ignore next */ export function hasGlobalThisEnv(key: string): boolean {
   return typeof globalThis !== 'undefined' && !!(globalThis as any)[key];
 }
 

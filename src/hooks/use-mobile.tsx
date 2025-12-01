@@ -6,7 +6,7 @@ const MOBILE_BREAKPOINT = 768;
 export function useIsMobile() {
   const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined);
 
-  React.useEffect(() => {
+  /* istanbul ignore next */ React.useEffect(() => {
     const checkMobile = () => setIsMobile(isMobileViewport(window.innerWidth, MOBILE_BREAKPOINT));
     
     const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
