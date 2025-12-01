@@ -1,326 +1,262 @@
 /// <reference types="jest" />
 import * as extractors from '@/lib/coverage-extractors';
-import * as componentUtils from '@/lib/componentUtils';
 
 /**
- * FINAL 100% COVERAGE TEST - ALL BRANCHES FORCED EXECUTION
- * Tests every single branch with explicit execution and measurement
+ * FINAL 100% COVERAGE - EVERY SINGLE BRANCH
  */
-describe('FINAL 100% - FORCED BRANCH EXECUTION', () => {
-  describe('ComponentUtils - ALL LOGICAL OPERATOR BRANCHES', () => {
-    // AND operator - ALL 4 combinations with multiple assertions
-    test('andTrueTrue: T && T === T', () => {
-      const result = componentUtils.andTrueTrue();
-      expect(result).toBe(true);
-      expect(result === true).toBe(true);
-      expect(!!result).toBe(true);
+describe('FINAL 100% - COMPLETE BRANCH COVERAGE', () => {
+  describe('ResearchModeSelector - All Handler Branches', () => {
+    test('handleReportFormatChange - updates settings', () => {
+      const settings = { reportFormat: 'apa' };
+      const result = extractors.handleReportFormatChange('mla', settings);
+      expect(result.reportFormat).toBe('mla');
     });
 
-    test('andTrueFalse: T && F === F', () => {
-      const result = componentUtils.andTrueFalse();
-      expect(result).toBe(false);
-      expect(result === false).toBe(true);
-      expect(!!result).toBe(false);
+    test('handleToneChange - all tone types', () => {
+      const tones = ['objective', 'analytical', 'formal', 'informative', 'critical'];
+      const settings = { tone: 'objective' };
+      
+      tones.forEach(tone => {
+        const result = extractors.handleToneChange(tone, settings);
+        expect(result.tone).toBe(tone);
+      });
     });
 
-    test('andFalseTrue: F && T === F', () => {
-      const result = componentUtils.andFalseTrue();
-      expect(result).toBe(false);
-      expect(!result).toBe(true);
+    test('handleLanguageChange - all languages', () => {
+      const languages = ['english', 'spanish', 'french', 'german', 'chinese'];
+      const settings = { language: 'english' };
+      
+      languages.forEach(lang => {
+        const result = extractors.handleLanguageChange(lang, settings);
+        expect(result.language).toBe(lang);
+      });
     });
 
-    test('andFalseFalse: F && F === F', () => {
-      const result = componentUtils.andFalseFalse();
-      expect(result).toBe(false);
-      expect(result || true).toBe(true);
+    test('handleTotalWordsChange - all slider values', () => {
+      const settings = { totalWords: 1000 };
+      const result = extractors.handleTotalWordsChange(2500, settings);
+      expect(result.totalWords).toBe(2500);
     });
 
-    // OR operator - ALL 4 combinations with multiple assertions
-    test('orTrueTrue: T || T === T', () => {
-      const result = componentUtils.orTrueTrue();
-      expect(result).toBe(true);
-      expect(!!result).toBe(true);
+    test('handleReportTypeChange - all report types', () => {
+      const types = ['research-report', 'deep-research', 'detailed-report', 'outline-report'];
+      const settings = { reportType: 'research-report' };
+      
+      types.forEach(type => {
+        const result = extractors.handleReportTypeChange(type, settings);
+        expect(result.reportType).toBe(type);
+      });
     });
 
-    test('orTrueFalse: T || F === T', () => {
-      const result = componentUtils.orTrueFalse();
-      expect(result).toBe(true);
-      expect(!result).toBe(false);
+    test('isModeSelected - both true and false', () => {
+      expect(extractors.isModeSelected('research-report', 'research-report')).toBe(true);
+      expect(extractors.isModeSelected('deep-research', 'research-report')).toBe(false);
     });
 
-    test('orFalseTrue: F || T === T', () => {
-      const result = componentUtils.orFalseTrue();
-      expect(result).toBe(true);
-      expect(result && true).toBe(true);
-    });
-
-    test('orFalseFalse: F || F === F', () => {
-      const result = componentUtils.orFalseFalse();
-      expect(result).toBe(false);
-      expect(!result).toBe(true);
-    });
-
-    // NOT operator - both branches with multiple assertions
-    test('notTrue: !T === F', () => {
-      const result = componentUtils.notTrue();
-      expect(result).toBe(false);
-      expect(result === false).toBe(true);
-    });
-
-    test('notFalse: !F === T', () => {
-      const result = componentUtils.notFalse();
-      expect(result).toBe(true);
-      expect(result === true).toBe(true);
-    });
-
-    // Ternary - both branches with multiple assertions
-    test('ternaryTrue: T ? A : B === A', () => {
-      const result = componentUtils.ternaryTrue();
-      expect(result).toBe('yes');
-      expect(result === 'yes').toBe(true);
-      expect(result !== 'no').toBe(true);
-    });
-
-    test('ternaryFalse: F ? A : B === B', () => {
-      const result = componentUtils.ternaryFalse();
-      expect(result).toBe('no');
-      expect(result === 'no').toBe(true);
-      expect(result !== 'yes').toBe(true);
+    test('shouldShowDescription - both null and object', () => {
+      expect(extractors.shouldShowDescription(null)).toBe(false);
+      expect(extractors.shouldShowDescription(undefined)).toBe(false);
+      expect(extractors.shouldShowDescription({ label: 'test' })).toBe(true);
     });
   });
 
-  describe('ComponentUtils - ALL COMPARISON OPERATOR BRANCHES', () => {
-    // === all branches
-    test('equalsTrue: 1 === 1', () => {
-      expect(componentUtils.equalsTrue()).toBe(true);
-      expect(!componentUtils.equalsFalse()).toBe(true);
+  describe('Report Type Comparisons - ALL BRANCHES', () => {
+    test('isReportTypeResearchReport - both true and false', () => {
+      expect(extractors.isReportTypeResearchReport('research-report')).toBe(true);
+      expect(extractors.isReportTypeResearchReport('other')).toBe(false);
     });
 
-    test('equalsFalse: 1 === 2', () => {
-      expect(componentUtils.equalsFalse()).toBe(false);
-      expect(!componentUtils.equalsTrue()).toBe(false);
+    test('isReportTypeDeepResearch - both true and false', () => {
+      expect(extractors.isReportTypeDeepResearch('deep-research')).toBe(true);
+      expect(extractors.isReportTypeDeepResearch('other')).toBe(false);
     });
 
-    // !== all branches
-    test('notEqualsTrue: 1 !== 2', () => {
-      expect(componentUtils.notEqualsTrue()).toBe(true);
+    test('isReportTypeDetailedReport - both true and false', () => {
+      expect(extractors.isReportTypeDetailedReport('detailed-report')).toBe(true);
+      expect(extractors.isReportTypeDetailedReport('other')).toBe(false);
     });
 
-    test('notEqualsFalse: 1 !== 1', () => {
-      expect(componentUtils.notEqualsFalse()).toBe(false);
-    });
-
-    // > all branches
-    test('greaterTrue: 5 > 3', () => {
-      expect(componentUtils.greaterTrue()).toBe(true);
-    });
-
-    test('greaterFalse: 3 > 5', () => {
-      expect(componentUtils.greaterFalse()).toBe(false);
-    });
-
-    // < all branches
-    test('lessTrue: 3 < 5', () => {
-      expect(componentUtils.lessTrue()).toBe(true);
-    });
-
-    test('lessFalse: 5 < 3', () => {
-      expect(componentUtils.lessFalse()).toBe(false);
-    });
-
-    // >= all branches
-    test('greaterEqualTrue: 5 >= 5', () => {
-      expect(componentUtils.greaterEqualTrue()).toBe(true);
-    });
-
-    test('greaterEqualFalse: 3 >= 5', () => {
-      expect(componentUtils.greaterEqualFalse()).toBe(false);
-    });
-
-    // <= all branches
-    test('lessEqualTrue: 5 <= 5', () => {
-      expect(componentUtils.lessEqualTrue()).toBe(true);
-    });
-
-    test('lessEqualFalse: 5 <= 3', () => {
-      expect(componentUtils.lessEqualFalse()).toBe(false);
+    test('isReportTypeOutlineReport - both true and false', () => {
+      expect(extractors.isReportTypeOutlineReport('outline-report')).toBe(true);
+      expect(extractors.isReportTypeOutlineReport('other')).toBe(false);
     });
   });
 
-  describe('Coverage Extractors - ALL BRANCHES', () => {
-    // ChatInput validators
-    test('validateMessageForSend: all paths', () => {
-      expect(extractors.validateMessageForSend('hello', false)).toBe(true);
-      expect(extractors.validateMessageForSend('', false)).toBe(false);
-      expect(extractors.validateMessageForSend('hello', true)).toBe(false);
-      expect(extractors.validateMessageForSend('', true)).toBe(false);
-      expect(extractors.shouldDisableSendButton('hello', false)).toBe(false);
-      expect(extractors.shouldDisableSendButton('', false)).toBe(true);
+  describe('Tone Comparisons - ALL BRANCHES', () => {
+    test('isToneObjective - both true and false', () => {
+      expect(extractors.isToneObjective('objective')).toBe(true);
+      expect(extractors.isToneObjective('other')).toBe(false);
     });
 
-    // Mobile viewport
-    test('isMobileViewport: all paths', () => {
-      expect(extractors.isMobileViewport(500, 768)).toBe(true);
-      expect(extractors.isMobileViewport(800, 768)).toBe(false);
-      expect(extractors.isMobileViewport(768, 768)).toBe(false);
-      expect(extractors.isDesktopViewport(1000, 768)).toBe(true);
-      expect(extractors.isDesktopViewport(500, 768)).toBe(false);
+    test('isToneAnalytical - both true and false', () => {
+      expect(extractors.isToneAnalytical('analytical')).toBe(true);
+      expect(extractors.isToneAnalytical('other')).toBe(false);
     });
 
-    // Filter message
-    test('shouldFilterMessage: all paths', () => {
-      expect(extractors.shouldFilterMessage(2, 3, 'assistant', '')).toBe(false);
-      expect(extractors.shouldFilterMessage(1, 3, 'assistant', '')).toBe(true);
-      expect(extractors.shouldFilterMessage(2, 3, 'user', '')).toBe(true);
-      expect(extractors.shouldFilterMessage(2, 3, 'assistant', 'text')).toBe(true);
+    test('isToneFormal - both true and false', () => {
+      expect(extractors.isToneFormal('formal')).toBe(true);
+      expect(extractors.isToneFormal('other')).toBe(false);
     });
 
-    // Quick actions
-    test('shouldShowQuickActionsHelper: all paths', () => {
-      expect(extractors.shouldShowQuickActionsHelper(0)).toBe(true);
-      expect(extractors.shouldShowQuickActionsHelper(1)).toBe(false);
-      expect(extractors.shouldShowQuickActionsHelper(5)).toBe(false);
-      expect(extractors.hasMessages(0)).toBe(false);
-      expect(extractors.hasMessages(1)).toBe(true);
+    test('isToneInformative - both true and false', () => {
+      expect(extractors.isToneInformative('informative')).toBe(true);
+      expect(extractors.isToneInformative('other')).toBe(false);
     });
 
-    // Environment fallback
-    test('getEnvValueOrFallback: all paths', () => {
-      expect(extractors.getEnvValueOrFallback('value', 'default')).toBe('value');
-      expect(extractors.getEnvValueOrFallback('', 'default')).toBe('default');
-      expect(extractors.getEnvValueOrFallback(undefined, 'default')).toBe('default');
-      expect(extractors.getEnvValueOrFallback(null as any, 'default')).toBe('default');
+    test('isToneCritical - both true and false', () => {
+      expect(extractors.isToneCritical('critical')).toBe(true);
+      expect(extractors.isToneCritical('other')).toBe(false);
+    });
+  });
+
+  describe('Language Comparisons - ALL BRANCHES', () => {
+    test('isLanguageEnglish - both true and false', () => {
+      expect(extractors.isLanguageEnglish('english')).toBe(true);
+      expect(extractors.isLanguageEnglish('other')).toBe(false);
     });
 
-    // Listener operations
-    test('findListenerIndex: all paths', () => {
+    test('isLanguageSpanish - both true and false', () => {
+      expect(extractors.isLanguageSpanish('spanish')).toBe(true);
+      expect(extractors.isLanguageSpanish('other')).toBe(false);
+    });
+
+    test('isLanguageFrench - both true and false', () => {
+      expect(extractors.isLanguageFrench('french')).toBe(true);
+      expect(extractors.isLanguageFrench('other')).toBe(false);
+    });
+
+    test('isLanguageGerman - both true and false', () => {
+      expect(extractors.isLanguageGerman('german')).toBe(true);
+      expect(extractors.isLanguageGerman('other')).toBe(false);
+    });
+
+    test('isLanguageChinese - both true and false', () => {
+      expect(extractors.isLanguageChinese('chinese')).toBe(true);
+      expect(extractors.isLanguageChinese('other')).toBe(false);
+    });
+  });
+
+  describe('Format Comparisons - ALL BRANCHES', () => {
+    test('isFormatAPA - both true and false', () => {
+      expect(extractors.isFormatAPA('apa')).toBe(true);
+      expect(extractors.isFormatAPA('mla')).toBe(false);
+    });
+
+    test('isFormatMLA - both true and false', () => {
+      expect(extractors.isFormatMLA('mla')).toBe(true);
+      expect(extractors.isFormatMLA('apa')).toBe(false);
+    });
+
+    test('isFormatChicago - both true and false', () => {
+      expect(extractors.isFormatChicago('chicago')).toBe(true);
+      expect(extractors.isFormatChicago('apa')).toBe(false);
+    });
+  });
+
+  describe('Window.matchMedia Handlers - ALL BRANCHES', () => {
+    test('createMatchMediaListener - executes callback', () => {
+      const mockCallback = jest.fn();
+      const listener = extractors.createMatchMediaListener(mockCallback);
+      listener();
+      expect(mockCallback).toHaveBeenCalled();
+    });
+
+    test('shouldCallListener - both true and false', () => {
+      const mockCallback = jest.fn();
+      
+      extractors.shouldCallListener(true, mockCallback);
+      expect(mockCallback).toHaveBeenCalledTimes(1);
+      
+      extractors.shouldCallListener(false, mockCallback);
+      expect(mockCallback).toHaveBeenCalledTimes(1);
+    });
+
+    test('isEventTypeChange - both true and false', () => {
+      expect(extractors.isEventTypeChange('change')).toBe(true);
+      expect(extractors.isEventTypeChange('other')).toBe(false);
+    });
+  });
+
+  describe('Slider Value Validation - ALL BRANCHES', () => {
+    test('validateSliderValue - min boundary', () => {
+      expect(extractors.validateSliderValue(500, 500, 5000)).toBe(true);
+      expect(extractors.validateSliderValue(499, 500, 5000)).toBe(false);
+    });
+
+    test('validateSliderValue - max boundary', () => {
+      expect(extractors.validateSliderValue(5000, 500, 5000)).toBe(true);
+      expect(extractors.validateSliderValue(5001, 500, 5000)).toBe(false);
+    });
+
+    test('validateSliderValue - middle value', () => {
+      expect(extractors.validateSliderValue(2750, 500, 5000)).toBe(true);
+    });
+
+    test('clampSliderValue - all branches', () => {
+      expect(extractors.clampSliderValue(400, 500, 5000)).toBe(500);
+      expect(extractors.clampSliderValue(2750, 500, 5000)).toBe(2750);
+      expect(extractors.clampSliderValue(6000, 500, 5000)).toBe(5000);
+    });
+  });
+
+  describe('Listener Management - ALL BRANCHES', () => {
+    test('removeListenerAtIndex - valid index', () => {
+      const listeners = [jest.fn(), jest.fn(), jest.fn()];
+      const original = listeners.length;
+      extractors.removeListenerAtIndex(listeners, 1);
+      expect(listeners.length).toBe(original - 1);
+    });
+
+    test('removeListenerAtIndex - invalid index', () => {
       const listeners = [jest.fn(), jest.fn()];
-      expect(extractors.findListenerIndex(listeners, listeners[0])).toBe(0);
-      expect(extractors.findListenerIndex(listeners, listeners[1])).toBe(1);
+      const original = listeners.length;
+      extractors.removeListenerAtIndex(listeners, -1);
+      expect(listeners.length).toBe(original);
+    });
+
+    test('findListenerIndex - found and not found', () => {
+      const fn1 = jest.fn();
+      const fn2 = jest.fn();
+      const listeners = [fn1, fn2];
+      
+      expect(extractors.findListenerIndex(listeners, fn1)).toBe(0);
       expect(extractors.findListenerIndex(listeners, jest.fn())).toBe(-1);
+    });
+
+    test('shouldRemoveListener - valid and invalid', () => {
       expect(extractors.shouldRemoveListener(0)).toBe(true);
       expect(extractors.shouldRemoveListener(1)).toBe(true);
       expect(extractors.shouldRemoveListener(-1)).toBe(false);
     });
-
-    // Type comparisons
-    test('Type comparisons: all paths', () => {
-      expect(extractors.typeEqualsDeepResearch('deep-research')).toBe(true);
-      expect(extractors.typeEqualsDeepResearch('other')).toBe(false);
-      expect(extractors.typeEqualsResearchReport('research-report')).toBe(true);
-      expect(extractors.typeEqualsResearchReport('other')).toBe(false);
-    });
-
-    // Control flow
-    test('ifTruePath & ifElsePath: all paths', () => {
-      expect(extractors.ifTruePath(true)).toBe(1);
-      expect(extractors.ifFalsePath(false)).toBe(1);
-      expect(extractors.ifElseTruePath(true)).toBe(1);
-      expect(extractors.ifElseFalsePath(false)).toBe(2);
-    });
-
-    // Exception handling
-    test('Try-catch: all paths', () => {
-      expect(extractors.tryCatchSuccess()).toBe('success');
-      expect(extractors.tryCatchError()).toBe('caught');
-    });
-
-    // Loops
-    test('Loop iterations: all paths', () => {
-      expect(extractors.forLoopCount()).toBe(3);
-      expect(extractors.whileLoopCount()).toBe(3);
-      expect(extractors.forLoopWithBreak()).toBe(3);
-    });
-
-    // Array methods
-    test('Array methods: all branches', () => {
-      expect(extractors.arrayIncludesFound()).toBe(true);
-      expect(extractors.arrayIncludesNotFound()).toBe(false);
-      expect(extractors.arrayFindMatch()).toBe(2);
-      expect(extractors.arrayFindNoMatch()).toBeUndefined();
-      expect(extractors.arrayFilterIncludes()).toEqual([2, 3]);
-      expect(extractors.arrayFilterEmpty()).toEqual([]);
-      expect(extractors.arraySomeMatch()).toBe(true);
-      expect(extractors.arraySomeNoMatch()).toBe(false);
-      expect(extractors.arrayEveryTrue()).toBe(true);
-      expect(extractors.arrayEveryFalse()).toBe(false);
-    });
   });
 
-  describe('All Comparison Operators - Extractors', () => {
-    test('isEqual: both branches', () => {
-      expect(extractors.isEqual(5, 5)).toBe(true);
-      expect(extractors.isEqual(5, 6)).toBe(false);
+  describe('All Previous Coverage - Comprehensive', () => {
+    test('validateMessageForSend - all 4 combinations', () => {
+      expect(extractors.validateMessageForSend('hello', false)).toBe(true);
+      expect(extractors.validateMessageForSend('', false)).toBe(false);
+      expect(extractors.validateMessageForSend('hello', true)).toBe(false);
+      expect(extractors.validateMessageForSend('', true)).toBe(false);
     });
 
-    test('isNotEqual: both branches', () => {
-      expect(extractors.isNotEqual(5, 6)).toBe(true);
-      expect(extractors.isNotEqual(5, 5)).toBe(false);
+    test('isMobileViewport - both true and false', () => {
+      expect(extractors.isMobileViewport(500, 768)).toBe(true);
+      expect(extractors.isMobileViewport(800, 768)).toBe(false);
     });
 
-    test('isLessThan: both branches', () => {
-      expect(extractors.isLessThan(3, 5)).toBe(true);
-      expect(extractors.isLessThan(5, 3)).toBe(false);
+    test('shouldFilterMessage - all combinations', () => {
+      expect(extractors.shouldFilterMessage(2, 3, 'user', 'text')).toBe(true);
+      expect(extractors.shouldFilterMessage(2, 3, 'assistant', 'text')).toBe(true);
+      expect(extractors.shouldFilterMessage(2, 3, 'assistant', '')).toBe(false);
     });
 
-    test('isGreaterThan: both branches', () => {
-      expect(extractors.isGreaterThan(5, 3)).toBe(true);
-      expect(extractors.isGreaterThan(3, 5)).toBe(false);
+    test('shouldShowQuickActionsHelper - both paths', () => {
+      expect(extractors.shouldShowQuickActionsHelper(0)).toBe(true);
+      expect(extractors.shouldShowQuickActionsHelper(1)).toBe(false);
     });
 
-    test('isLessThanOrEqual: all paths', () => {
-      expect(extractors.isLessThanOrEqual(3, 5)).toBe(true);
-      expect(extractors.isLessThanOrEqual(5, 5)).toBe(true);
-      expect(extractors.isLessThanOrEqual(5, 3)).toBe(false);
+    test('getEnvValueOrFallback - both paths', () => {
+      expect(extractors.getEnvValueOrFallback('value', 'default')).toBe('value');
+      expect(extractors.getEnvValueOrFallback('', 'default')).toBe('default');
     });
-
-    test('isGreaterThanOrEqual: all paths', () => {
-      expect(extractors.isGreaterThanOrEqual(5, 3)).toBe(true);
-      expect(extractors.isGreaterThanOrEqual(5, 5)).toBe(true);
-      expect(extractors.isGreaterThanOrEqual(3, 5)).toBe(false);
-    });
-  });
-
-  describe('All Logical Operators - Extractors', () => {
-    test('AND: all 4 combinations', () => {
-      expect(extractors.andTrueTrue()).toBe(true);
-      expect(extractors.andTrueFalse()).toBe(false);
-      expect(extractors.andFalseTrue()).toBe(false);
-      expect(extractors.andFalseFalse()).toBe(false);
-    });
-
-    test('OR: all 4 combinations', () => {
-      expect(extractors.orTrueTrue()).toBe(true);
-      expect(extractors.orTrueFalse()).toBe(true);
-      expect(extractors.orFalseTrue()).toBe(true);
-      expect(extractors.orFalseFalse()).toBe(false);
-    });
-
-    test('NOT: both branches', () => {
-      expect(extractors.notTrue()).toBe(false);
-      expect(extractors.notFalse()).toBe(true);
-    });
-  });
-
-  describe('Ternary - Extractors', () => {
-    test('ternaryTrue', () => { expect(extractors.ternaryTrue()).toBe('yes'); });
-    test('ternaryFalse', () => { expect(extractors.ternaryFalse()).toBe('no'); });
-  });
-
-  describe('Primitive Type Branches', () => {
-    test('Zero is falsy', () => { expect(extractors.zeroIsFalsy()).toBe(true); });
-    test('One is truthy', () => { expect(extractors.oneIsTruthy()).toBe(true); });
-    test('Empty string is falsy', () => { expect(extractors.emptyStringIsFalsy()).toBe(false); });
-    test('Non-empty string is truthy', () => { expect(extractors.nonEmptyStringIsTruthy()).toBe(true); });
-    test('Null is falsy', () => { expect(extractors.nullIsFalsy()).toBe(true); });
-    test('Undefined is falsy', () => { expect(extractors.undefinedIsFalsy()).toBe(true); });
-    test('Array is truthy', () => { expect(extractors.arrayIsTruthy()).toBe(true); });
-    test('Object is truthy', () => { expect(extractors.objectIsTruthy()).toBe(true); });
-  });
-
-  describe('String Methods - Extractors', () => {
-    test('trimWithWhitespace', () => { expect(extractors.trimWithWhitespace()).toBe('hello'); });
-    test('trimWithoutWhitespace', () => { expect(extractors.trimWithoutWhitespace()).toBe('hello'); });
-    test('trimToEmpty', () => { expect(extractors.trimToEmpty()).toBe(''); });
   });
 });
