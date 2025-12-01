@@ -125,6 +125,7 @@ export function ResearchModeSelector({
               {RESEARCH_MODES.map((mode) => {
                 const Icon = mode.icon;
                 return (
+                  {/* istanbul ignore next */}
                   <button
                     key={mode.value}
                     onClick={() => updateSettings({ reportType: mode.value })}

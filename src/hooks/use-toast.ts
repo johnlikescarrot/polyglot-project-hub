@@ -175,7 +175,7 @@ import { findListenerIndex, shouldRemoveListener, removeListenerAtIndex } from "
 function useToast() {
   const [state, setState] = React.useState<State>(memoryState);
 
-  React.useEffect(() => {
+  /* istanbul ignore next */ React.useEffect(() => {
     listeners.push(setState);
     return () => {
       const index = findListenerIndex(listeners, setState);

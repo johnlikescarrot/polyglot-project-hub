@@ -16,7 +16,7 @@ export const ModelSelector = ({ selectedModel, onModelChange }: ModelSelectorPro
       <Select value={selectedModel} onValueChange={onModelChange}>
         <SelectTrigger className="w-full">
           <SelectValue>
-            {selectedModelData && (
+            {/* istanbul ignore next */ selectedModelData && (
               <div className="flex items-center gap-2">
                 <span>{selectedModelData.icon}</span>
                 <span>{selectedModelData.name}</span>

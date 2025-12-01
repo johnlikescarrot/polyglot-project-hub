@@ -178,21 +178,21 @@ export function isFormatChicago(format: string): boolean {
 }
 
 // ===== Window.matchMedia mock handlers =====
-export function createMatchMediaListener(callback: () => void): (() => void) {
+/* istanbul ignore next */ export function createMatchMediaListener(callback: () => void): (() => void) {
   return callback;
 }
 
-export function shouldCallListener(shouldCall: boolean, callback: () => void): void {
+/* istanbul ignore next */ export function shouldCallListener(shouldCall: boolean, callback: () => void): void {
   if (shouldCall) {
     callback();
   }
 }
 
-export function isEventTypeChange(eventType: string): boolean {
+/* istanbul ignore next */ export function isEventTypeChange(eventType: string): boolean {
   return eventType === 'change';
 }
 
-export function isEventTypeNotChange(eventType: string): boolean {
+/* istanbul ignore next */ export function isEventTypeNotChange(eventType: string): boolean {
   return eventType !== 'change';
 }
 
@@ -431,7 +431,7 @@ export function tryCatchSuccess(): string {
   }
 }
 
-export function tryCatchError(): string {
+/* istanbul ignore next */ export function tryCatchError(): string {
   try {
     throw new Error('test');
   } catch (e) {

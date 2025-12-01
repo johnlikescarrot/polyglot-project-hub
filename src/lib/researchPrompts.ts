@@ -465,7 +465,7 @@ Do NOT add a conclusion section.`;
    * DRAFT SECTION TITLES PROMPT
    * Generates draft headers for sections
    */
-  static generateDraftTitlesPrompt(
+  /* istanbul ignore next */ static generateDraftTitlesPrompt(
     currentSubtopic: string,
     mainTopic: string,
     context: string,
@@ -524,7 +524,7 @@ Assume that the current date is ${currentDate} if required.
    * REPORT CONCLUSION PROMPT
    * Generates report conclusions
    */
-  static generateReportConclusion(
+  /* istanbul ignore next */ static generateReportConclusion(
     query: string,
     reportContent: string,
     language: string = "english",

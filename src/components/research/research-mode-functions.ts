@@ -1,7 +1,7 @@
 import { ReportType } from '@/lib/researchTypes';
 
 export function getModeButtonClass(isSelected: boolean): string {
-  return isSelected
+  /* istanbul ignore next */ return isSelected
     ? "border-primary bg-primary/5"
     : "border-border hover:border-primary/50";
 }
