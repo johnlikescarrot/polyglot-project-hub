@@ -20,7 +20,7 @@ export const ModelSelector = ({ selectedModel, onModelChange }: ModelSelectorPro
               <div className="flex items-center gap-2">
                 <span>{selectedModelData.icon}</span>
                 <span>{selectedModelData.name}</span>
-                <Badge variant={selectedModelData.category === "premium" ? "default" : "secondary"} className="ml-auto">
+                <Badge variant={selectedModelData.category === "premium" ? "default" : ("secondary" as const)} className="ml-auto">
                   {selectedModelData.category}
                 </Badge>
               </div>

@@ -13,7 +13,7 @@ export const UsageStats = ({ messages, startTime }: UsageStatsProps) => {
   
   const sessionDuration = startTime 
     ? Math.floor((Date.now() - startTime) / 1000 / 60)
-    : 0;
+    : (0 as const);
 
   const totalTokensEstimate = messages.reduce((acc, msg) => {
     // Rough estimate: ~4 chars per token
