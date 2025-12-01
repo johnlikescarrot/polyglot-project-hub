@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">93.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/15</span>
+                <span class='fraction'>14/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">92.85% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/14</span>
+                <span class='fraction'>13/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">93.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/15</span>
+                <span class='fraction'>14/15</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -93,63 +93,63 @@
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">358x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">92x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">92x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">87x</span>
+<span class="cline-any cline-yes">81x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { ReportType } from '@/lib/researchTypes';</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { ReportType } from '@/lib/researchTypes';
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export function <span class="fstat-no" title="function not covered" >g</span>etModeButtonClass(</span>isSelected: boolean): string {
-<span class="cstat-no" title="statement not covered" >  return isSelected</span>
+export function getModeButtonClass(isSelected: boolean): string {
+  return isSelected
     ? "border-primary bg-primary/5"
     : "border-border hover:border-primary/50";
 }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export function <span class="fstat-no" title="function not covered" >s</span>houldShowModeDescription(</span>reportType: ReportType): boolean {
-<span class="cstat-no" title="statement not covered" >  return reportType === ReportType.DeepResearch ||</span>
+export function shouldShowModeDescription(reportType: ReportType): boolean {
+  return reportType === ReportType.DeepResearch ||
     reportType === ReportType.ResearchReport ||
     reportType === ReportType.DetailedReport ||
     reportType === ReportType.OutlineReport;
 }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export function <span class="fstat-no" title="function not covered" >g</span>etModeDescription(</span>reportType: ReportType): string {
-<span class="cstat-no" title="statement not covered" >  if (reportType === ReportType.DeepResearch) {</span>
-<span class="cstat-no" title="statement not covered" >    return "Conducts multi-level hierarchical research, following interesting threads and synthesizing insights from multiple research depths.";</span>
+export function getModeDescription(reportType: ReportType): string {
+  if (reportType === ReportType.DeepResearch) {
+    return "Conducts multi-level hierarchical research, following interesting threads and synthesizing insights from multiple research depths.";
   }
-<span class="cstat-no" title="statement not covered" >  if (reportType === ReportType.ResearchReport) {</span>
-<span class="cstat-no" title="statement not covered" >    return "Generates a comprehensive, well-structured research report with citations and references.";</span>
+  if (reportType === ReportType.ResearchReport) {
+    return "Generates a comprehensive, well-structured research report with citations and references.";
   }
-<span class="cstat-no" title="statement not covered" >  if (reportType === ReportType.DetailedReport) {</span>
-<span class="cstat-no" title="statement not covered" >    return "Creates an in-depth report with multiple subtopics, each thoroughly researched and analyzed.";</span>
+  if (reportType === ReportType.DetailedReport) {
+    return "Creates an in-depth report with multiple subtopics, each thoroughly researched and analyzed.";
   }
-<span class="cstat-no" title="statement not covered" >  if (reportType === ReportType.OutlineReport) {</span>
-<span class="cstat-no" title="statement not covered" >    return "Provides a structured outline for your research topic, perfect for planning further investigation.";</span>
+  <span class="missing-if-branch" title="else path not taken" >E</span>if (reportType === ReportType.OutlineReport) {
+    return "Provides a structured outline for your research topic, perfect for planning further investigation.";
   }
 <span class="cstat-no" title="statement not covered" >  return "";</span>
 }
@@ -160,7 +160,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-01T11:40:05.984Z
+                at 2025-12-01T11:44:14.287Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

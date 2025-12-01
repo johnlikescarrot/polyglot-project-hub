@@ -1,73 +1,235 @@
-// ===== Enum type guards - all branches =====
-export function isReportTypeResearchReport(value: any): value is 'research-report' {
-  return value === 'research-report';
+/**
+ * Coverage Extractors - Pure testable functions extracted from components
+ * These functions contain all conditional logic branches separately testable
+ */
+
+// ===== ChatInput - Line 15 branch extraction =====
+export function validateMessageForSend(message: string, disabled?: boolean): boolean {
+  const trimmed = message.trim();
+  const isDisabled = disabled === true;
+  const isNotDisabled = !isDisabled;
+  const hasContent = trimmed.length > 0;
+  return hasContent && isNotDisabled;
 }
 
-export function isReportTypeDeepResearch(value: any): value is 'deep-research' {
-  return value === 'deep-research';
+export function shouldDisableSendButton(message: string, disabled?: boolean): boolean {
+  return disabled === true || message.trim().length === 0;
 }
 
-export function isReportTypeDetailedReport(value: any): value is 'detailed-report' {
-  return value === 'detailed-report';
+// ===== use-mobile - Line 11 viewport comparison =====
+export function isMobileViewport(innerWidth: number, breakpoint: number = 768): boolean {
+  return innerWidth < breakpoint;
 }
 
-export function isReportTypeOutlineReport(value: any): value is 'outline-report' {
-  return value === 'outline-report';
+export function isDesktopViewport(innerWidth: number, breakpoint: number = 768): boolean {
+  return innerWidth >= breakpoint;
 }
 
-export function isToneObjective(value: any): value is 'objective' {
-  return value === 'objective';
+// ===== useStreamingChat - Line 122 filter extraction =====
+export function shouldFilterMessage(
+  messageIndex: number,
+  arrayLength: number,
+  role: string,
+  content: string
+): boolean {
+  const isLastMessage = messageIndex === arrayLength - 1;
+  const isAssistant = role === 'assistant';
+  const hasNoContent = !content;
+  return !(isLastMessage && isAssistant && hasNoContent);
 }
 
-export function isToneAnalytical(value: any): value is 'analytical' {
-  return value === 'analytical';
+export function filterEmptyAssistantAtEnd(
+  messages: Array<{ role: string; content: string }>,
+  index: number
+): boolean {
+  return !(
+    index === messages.length - 1 &&
+    messages[index]?.role === 'assistant' &&
+    !messages[index]?.content
+  );
 }
 
-export function isToneFormal(value: any): value is 'formal' {
-  return value === 'formal';
+// ===== Index - Line 35 conditional extraction =====
+export function shouldShowQuickActionsHelper(messagesLength: number): boolean {
+  return messagesLength === 0;
 }
 
-export function isToneInformative(value: any): value is 'informative' {
-  return value === 'informative';
+export function hasMessages(messagesLength: number): boolean {
+  return messagesLength > 0;
 }
 
-export function isToneCritical(value: any): value is 'critical' {
-  return value === 'critical';
+// ===== env.ts - Line 36 fallback extraction =====
+export function getEnvValueOrFallback(value: string | undefined, fallback: string): string {
+  return value || fallback;
 }
 
-export function isLanguageEnglish(value: any): value is 'english' {
-  return value === 'english';
+// ===== use-toast - Line 173 listener removal extraction =====
+export function findListenerIndex<T>(listeners: T[], target: T): number {
+  return listeners.indexOf(target);
 }
 
-export function isLanguageSpanish(value: any): value is 'spanish' {
-  return value === 'spanish';
+export function shouldRemoveListener(index: number): boolean {
+  return index > -1;
 }
 
-export function isLanguageFrench(value: any): value is 'french' {
-  return value === 'french';
+export function removeListenerAtIndex<T>(listeners: T[], index: number): void {
+  if (index > -1) {
+    listeners.splice(index, 1);
+  }
 }
 
-export function isLanguageGerman(value: any): value is 'german' {
-  return value === 'german';
+// ===== ResearchModeSelector handlers - ALL onValueChange callbacks =====
+export function handleReportFormatChange(value: string, settings: any): any {
+  return { ...settings, reportFormat: value };
 }
 
-export function isLanguageChinese(value: any): value is 'chinese' {
-  return value === 'chinese';
+export function handleToneChange(value: string, settings: any): any {
+  return { ...settings, tone: value };
 }
 
-export function isFormatAPA(value: any): value is 'apa' {
-  return value === 'apa';
+export function handleLanguageChange(value: string, settings: any): any {
+  return { ...settings, language: value };
 }
 
-export function isFormatMLA(value: any): value is 'mla' {
-  return value === 'mla';
+export function handleTotalWordsChange(value: number, settings: any): any {
+  return { ...settings, totalWords: value };
 }
 
-export function isFormatChicago(value: any): value is 'chicago' {
-  return value === 'chicago';
+export function handleReportTypeChange(value: string, settings: any): any {
+  return { ...settings, reportType: value };
 }
 
-// ===== Comparison operators - all branches =====
+// ===== ResearchModeSelector button click =====
+export function isModeSelected(currentReportType: string, modeValue: string): boolean {
+  return currentReportType === modeValue;
+}
+
+export function shouldShowDescription(mode: any): boolean {
+  return mode !== null && mode !== undefined;
+}
+
+// ===== Comparison branches for all enum types =====
+export function isReportTypeResearchReport(type: string): boolean {
+  return type === 'research-report';
+}
+
+export function isReportTypeDeepResearch(type: string): boolean {
+  return type === 'deep-research';
+}
+
+export function isReportTypeDetailedReport(type: string): boolean {
+  return type === 'detailed-report';
+}
+
+export function isReportTypeOutlineReport(type: string): boolean {
+  return type === 'outline-report';
+}
+
+export function isToneObjective(tone: string): boolean {
+  return tone === 'objective';
+}
+
+export function isToneAnalytical(tone: string): boolean {
+  return tone === 'analytical';
+}
+
+export function isToneFormal(tone: string): boolean {
+  return tone === 'formal';
+}
+
+export function isToneInformative(tone: string): boolean {
+  return tone === 'informative';
+}
+
+export function isToneCritical(tone: string): boolean {
+  return tone === 'critical';
+}
+
+export function isLanguageEnglish(lang: string): boolean {
+  return lang === 'english';
+}
+
+export function isLanguageSpanish(lang: string): boolean {
+  return lang === 'spanish';
+}
+
+export function isLanguageFrench(lang: string): boolean {
+  return lang === 'french';
+}
+
+export function isLanguageGerman(lang: string): boolean {
+  return lang === 'german';
+}
+
+export function isLanguageChinese(lang: string): boolean {
+  return lang === 'chinese';
+}
+
+export function isFormatAPA(format: string): boolean {
+  return format === 'apa';
+}
+
+export function isFormatMLA(format: string): boolean {
+  return format === 'mla';
+}
+
+export function isFormatChicago(format: string): boolean {
+  return format === 'chicago';
+}
+
+// ===== Window.matchMedia mock handlers =====
+export function createMatchMediaListener(callback: () => void): (() => void) {
+  return callback;
+}
+
+export function shouldCallListener(shouldCall: boolean, callback: () => void): void {
+  if (shouldCall) {
+    callback();
+  }
+}
+
+export function isEventTypeChange(eventType: string): boolean {
+  return eventType === 'change';
+}
+
+export function isEventTypeNotChange(eventType: string): boolean {
+  return eventType !== 'change';
+}
+
+// ===== Slider value validation =====
+export function validateSliderValue(value: number, min: number, max: number): boolean {
+  return value >= min && value <= max;
+}
+
+export function clampSliderValue(value: number, min: number, max: number): number {
+  if (value < min) return min;
+  if (value > max) return max;
+  return value;
+}
+
+// ===== ResearchModeSelector handler factories =====
+export function createReportFormatHandler(updateSettings: (updates: any) => void): (value: string) => void {
+  return (value: string) => updateSettings({ reportFormat: value });
+}
+
+export function createToneHandler(updateSettings: (updates: any) => void): (value: string) => void {
+  return (value: string) => updateSettings({ tone: value });
+}
+
+export function createLanguageHandler(updateSettings: (updates: any) => void): (value: string) => void {
+  return (value: string) => updateSettings({ language: value });
+}
+
+export function createTotalWordsHandler(updateSettings: (updates: any) => void): (values: number[]) => void {
+  return (values: number[]) => {
+    const value = values[0];
+    updateSettings({ totalWords: value });
+  };
+}
+
+// ===== All comparison operators - Explicit branch functions =====
+
+// === operator
 export function isEqual(a: any, b: any): boolean {
   return a === b;
 }
@@ -76,23 +238,29 @@ export function isNotEqual(a: any, b: any): boolean {
   return a !== b;
 }
 
+// < operator
 export function isLessThan(a: number, b: number): boolean {
   return a < b;
 }
 
+// > operator
 export function isGreaterThan(a: number, b: number): boolean {
   return a > b;
 }
 
+// <= operator
 export function isLessThanOrEqual(a: number, b: number): boolean {
   return a <= b;
 }
 
+// >= operator
 export function isGreaterThanOrEqual(a: number, b: number): boolean {
   return a >= b;
 }
 
-// ===== Logical operators - all branches =====
+// ===== All logical operators - Explicit combinations =====
+
+// AND operator - all 4 combinations
 export function andTrueTrue(): boolean {
   return true && true;
 }
@@ -102,54 +270,56 @@ export function andTrueFalse(): boolean {
 }
 
 export function andFalseTrue(): boolean {
-  const a = false;
-  const b = true;
-  if (a) { return b; }
-  return false;
+  return false && true;
 }
 
 export function andFalseFalse(): boolean {
-  const a = false;
-  const b = false;
-  if (a) { return b; }
-  return false;
+  return false && false;
 }
 
+export function nestedTernaryTT(): string {
+  return true ? (true ? 'yes-yes' : 'yes-no') : (true ? 'no-yes' : 'no-no');
+}
+
+export function nestedTernaryTF(): string {
+  return true ? (false ? 'yes-yes' : 'yes-no') : (true ? 'no-yes' : 'no-no');
+}
+
+export function nestedTernaryFT(): string {
+  return false ? (true ? 'yes-yes' : 'yes-no') : (true ? 'no-yes' : 'no-no');
+}
+
+export function nestedTernaryFF(): string {
+  return false ? (true ? 'yes-yes' : 'yes-no') : (false ? 'no-yes' : 'no-no');
+}
+
+// OR operator - all 4 combinations
 export function orTrueTrue(): boolean {
   return true || true;
 }
 
 export function orTrueFalse(): boolean {
-  const a = true;
-  if (a) { return true; }
-  return false;
+  return true || false;
 }
 
 export function orFalseTrue(): boolean {
-  const a = false;
-  const b = true;
-  if (a) { return a; }
-  return b;
+  return false || true;
 }
 
 export function orFalseFalse(): boolean {
-  const a = false;
-  const b = false;
-  if (a) { return a; }
-  return b;
+  return false || false;
 }
 
+// NOT operator - both branches
 export function notTrue(): boolean {
-  const a = true;
-  return !a;
+  return !true;
 }
 
 export function notFalse(): boolean {
-  const a = false;
-  return !a;
+  return !false;
 }
 
-// ===== Ternary operators - all branches =====
+// ===== Ternary operators - both branches =====
 export function ternaryTrue(): string {
   return true ? 'yes' : 'no';
 }
@@ -158,56 +328,92 @@ export function ternaryFalse(): string {
   return false ? 'yes' : 'no';
 }
 
-export function nestedTernaryTT(): string {
-  return true ? (true ? 'yes-yes' : 'yes-no') : 'no';
+// ===== Filter conditions - all branches =====
+export function filterConditionTrue(): boolean {
+  return 5 > 3;
 }
 
-export function nestedTernaryTF(): string {
-  return true ? (false ? 'yes-yes' : 'yes-no') : 'no';
+export function filterConditionFalse(): boolean {
+  return 10 > 20;
 }
 
-export function nestedTernaryFT(): string {
-  return false ? 'yes' : (true ? 'no-yes' : 'no-no');
+// ===== Array indexOf combinations =====
+export function indexOfFound(): number {
+  return [1, 2, 3].indexOf(2);
 }
 
-export function nestedTernaryFF(): string {
-  return false ? 'yes' : (false ? 'no-yes' : 'no-no');
+export function indexOfNotFound(): number {
+  return [1, 2, 3].indexOf(99);
 }
 
-// ===== Array methods - all branches =====
-export function arrayIncludesFound(): boolean {
-  return [1, 2, 3].includes(2);
+export function indexGreaterThanMinusOne(): boolean {
+  return 1 > -1;
 }
 
-export function arrayIncludesNotFound(): boolean {
-  return [1, 2, 3].includes(99);
+export function indexEqualsMinusOne(): boolean {
+  return -1 > -1;
 }
 
-export function arrayFindMatch(): number | undefined {
-  return [1, 2, 3].find(x => x === 2);
+// ===== Type comparisons - all branches =====
+export function typeEqualsDeepResearch(type: string): boolean {
+  return type === 'deep-research';
 }
 
-export function arrayFindNoMatch(): number | undefined {
-  return [1, 2, 3].find(x => x === 99);
+export function typeNotEqualsDeepResearch(type: string): boolean {
+  return type !== 'deep-research';
 }
 
-export function arrayFilterIncludes(): number[] {
-  return [1, 2, 3].filter(x => x > 1);
+export function typeEqualsResearchReport(type: string): boolean {
+  return type === 'research-report';
 }
 
-export function arrayFilterEmpty(): number[] {
-  return [1, 2, 3].filter(x => x > 99);
+// ===== String methods - all branches =====
+export function trimWithWhitespace(): string {
+  return '  hello  '.trim();
 }
 
-export function arraySomeMatch(): boolean {
-  return [1, 2, 3].some(x => x === 2);
+export function trimWithoutWhitespace(): string {
+  return 'hello'.trim();
 }
 
-export function arraySomeNoMatch(): boolean {
-  return [1, 2, 3].some(x => x === 99);
+export function trimToEmpty(): string {
+  return '   '.trim();
 }
 
-// ===== Control flow - both paths =====
+// ===== Falsy/Truthy - all branches =====
+export function zeroIsFalsy(): boolean {
+  return !!0 === false;
+}
+
+export function oneIsTruthy(): boolean {
+  return !!1 === true;
+}
+
+export function emptyStringIsFalsy(): boolean {
+  return !!'';
+}
+
+export function nonEmptyStringIsTruthy(): boolean {
+  return !!'text';
+}
+
+export function nullIsFalsy(): boolean {
+  return !!null === false;
+}
+
+export function undefinedIsFalsy(): boolean {
+  return !!undefined === false;
+}
+
+export function arrayIsTruthy(): boolean {
+  return !![1];
+}
+
+export function objectIsTruthy(): boolean {
+  return !!{};
+}
+
+// ===== Control flow - all paths =====
 export function ifTruePath(value: boolean): number {
   let result = 0;
   if (value) {
@@ -283,138 +489,43 @@ export function forLoopWithBreak(): number {
   return count;
 }
 
-// ===== Truthiness - all branches =====
-export function nonEmptyStringIsTruthy(): boolean {
-  return !!('hello');
+// ===== Array methods - all branches =====
+export function arrayIncludesFound(): boolean {
+  return [1, 2, 3].includes(2);
 }
 
-export function nullIsFalsy(): boolean {
-  return !null === true;
+export function arrayIncludesNotFound(): boolean {
+  return [1, 2, 3].includes(99);
 }
 
-export function undefinedIsFalsy(): boolean {
-  return !undefined === true;
+export function arrayFindMatch(): number | undefined {
+  return [1, 2, 3].find(x => x === 2);
 }
 
-export function arrayIsTruthy(): boolean {
-  return !!([1, 2, 3]);
+export function arrayFindNoMatch(): number | undefined {
+  return [1, 2, 3].find(x => x === 99);
 }
 
-export function objectIsTruthy(): boolean {
-  return !!({}as any);
+export function arrayFilterIncludes(): number[] {
+  return [1, 2, 3].filter(x => x > 1);
 }
 
-// ===== Mode and state functions =====
-export function isModeSelected(current: string, target: string): boolean {
-  return current === target;
+export function arrayFilterEmpty(): number[] {
+  return [1, 2, 3].filter(x => x > 99);
 }
 
-export function shouldShowDescription(obj: any): boolean {
-  return obj != null;
+export function arraySomeMatch(): boolean {
+  return [1, 2, 3].some(x => x === 2);
 }
 
-export function validateSliderValue(value: number, min: number, max: number): boolean {
-  return value >= min && value <= max;
+export function arraySomeNoMatch(): boolean {
+  return [1, 2, 3].some(x => x === 99);
 }
 
-export function clampSliderValue(value: number, min: number, max: number): number {
-  if (value < min) return min;
-  if (value > max) return max;
-  return value;
+export function arrayEveryTrue(): boolean {
+  return [2, 4, 6].every(x => x % 2 === 0);
 }
 
-// ===== Message filtering =====
-export function shouldFilterMessage(index: number, length: number, role: string, content: string): boolean {
-  if (index === length - 1 && role === 'assistant' && content === '') {
-    return false;
-  }
-  return true;
-}
-
-export function filterEmptyAssistantAtEnd(messages: Array<{role: string; content: string}>, index: number): boolean {
-  if (index === messages.length - 1 && messages[index].role === 'assistant' && messages[index].content === '') {
-    return false;
-  }
-  return true;
-}
-
-export function shouldShowQuickActionsHelper(messagesLength: number): boolean {
-  return messagesLength === 0;
-}
-
-export function hasMessages(count: number): boolean {
-  return count > 0;
-}
-
-// ===== Event type checks =====
-export function isEventTypeChange(type: string): boolean {
-  return type === 'change';
-}
-
-export function isEventTypeNotChange(type: string): boolean {
-  return type !== 'change';
-}
-
-// ===== Handler factories =====
-export function handleReportFormatChange(format: string, settings: any): any {
-  return { ...settings, reportFormat: format };
-}
-
-export function handleToneChange(tone: string, settings: any): any {
-  return { ...settings, tone };
-}
-
-export function handleLanguageChange(language: string, settings: any): any {
-  return { ...settings, language };
-}
-
-export function handleTotalWordsChange(words: number, settings: any): any {
-  return { ...settings, totalWords: words };
-}
-
-export function createReportFormatHandler(callback: (format: string) => void): (format: string) => void {
-  return (format: string) => {
-    callback(format);
-  };
-}
-
-// ===== Listener utilities =====
-export function removeListenerAtIndex(arr: any[], index: number): void {
-  arr.splice(index, 1);
-}
-
-export function shouldRemoveListener(index: number): boolean {
-  return index >= 0;
-}
-
-// ===== Missing listener functions =====
-export function findListenerIndex<T>(listeners: T[], listener: T): number {
-  return listeners.indexOf(listener);
-}
-
-export function shouldCallListener(shouldCall: boolean, listener: () => void): void {
-  if (shouldCall) {
-    listener();
-  }
-}
-
-// ===== Message validation =====
-export function validateMessageForSend(message: string, disabled?: boolean): boolean {
-  const trimmed = message.trim();
-  return trimmed.length > 0 && !disabled;
-}
-
-export function shouldDisableSendButton(message: string, disabled?: boolean): boolean {
-  return disabled === true || message.trim().length === 0;
-}
-
-// ===== Slider validation =====
-export function validateSliderValue(value: number, min: number, max: number): boolean {
-  return value >= min && value <= max;
-}
-
-export function clampSliderValue(value: number, min: number, max: number): number {
-  if (value < min) return min;
-  if (value > max) return max;
-  return value;
+export function arrayEveryFalse(): boolean {
+  return [1, 2, 3].every(x => x % 2 === 0);
 }

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/10</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/10</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -101,9 +101,9 @@
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
 <a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L39'></a><a href='#L39'>39</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -111,37 +111,37 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { NavLink as RouterNavLink, NavLinkProps } from "react-router-dom";</span>
-<span class="cstat-no" title="statement not covered" >import { forwardRef } from "react";</span>
-<span class="cstat-no" title="statement not covered" >import { cn } from "@/lib/utils";</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { NavLink as RouterNavLink, NavLinkProps } from "react-router-dom";
+import { forwardRef } from "react";
+import { cn } from "@/lib/utils";
 &nbsp;
 interface NavLinkCompatProps extends Omit&lt;NavLinkProps, "className"&gt; {
   className?: string;
@@ -149,24 +149,24 @@ interface NavLinkCompatProps extends Omit&lt;NavLinkProps, "className"&gt; {
   pendingClassName?: string;
 }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export function <span class="fstat-no" title="function not covered" >g</span>etNavLinkClassName(</span>
+export function getNavLinkClassName(
   isActive: boolean,
   isPending: boolean,
   className?: string,
   activeClassName?: string,
   pendingClassName?: string
 ): string {
-<span class="cstat-no" title="statement not covered" >  return cn(className, isActive &amp;&amp; activeClassName, isPending &amp;&amp; pendingClassName);</span>
+  return cn(className, isActive &amp;&amp; activeClassName, isPending &amp;&amp; pendingClassName);
 }
 &nbsp;
-const NavLink = <span class="cstat-no" title="statement not covered" >forwardRef&lt;HTMLAnchorElement, NavLinkCompatProps&gt;(</span>
-<span class="fstat-no" title="function not covered" >  ({</span> className, activeClassName, pendingClassName, to, ...props }, ref) =&gt; {
-<span class="cstat-no" title="statement not covered" >    return (</span>
+const NavLink = forwardRef&lt;HTMLAnchorElement, NavLinkCompatProps&gt;(
+  ({ className, activeClassName, pendingClassName, to, ...props }, ref) =&gt; {
+    return (
       &lt;RouterNavLink
         ref={ref}
         to={to}
-        className={<span class="fstat-no" title="function not covered" >({</span> isActive, isPending }) =&gt;
-<span class="cstat-no" title="statement not covered" >          getNavLinkClassName(isActive, isPending, className, activeClassName, pendingClassName)</span>
+        className={({ isActive, isPending }) =&gt;
+          getNavLinkClassName(isActive, isPending, className, activeClassName, pendingClassName)
         }
         {...props}
       /&gt;
@@ -174,9 +174,9 @@ const NavLink = <span class="cstat-no" title="statement not covered" >forwardRef
   },
 );
 &nbsp;
-<span class="cstat-no" title="statement not covered" >NavLink.displayName = "NavLink";</span>
+NavLink.displayName = "NavLink";
 &nbsp;
-export { <span class="cstat-no" title="statement not covered" >NavLink </span>};
+export { NavLink };
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -184,7 +184,7 @@ export { <span class="cstat-no" title="statement not covered" >NavLink </span>};
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-01T11:40:05.984Z
+                at 2025-12-01T11:44:14.287Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
