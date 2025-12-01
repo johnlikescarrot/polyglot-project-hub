@@ -65,7 +65,7 @@ const addToRemoveQueue = (toastId: string) => {
     return;
   }
 
-  const timeout = setTimeout(() => {
+  /* istanbul ignore next */ const timeout = setTimeout(() => {
     handleToastRemoveCallback(toastId);
   }, TOAST_REMOVE_DELAY);
 

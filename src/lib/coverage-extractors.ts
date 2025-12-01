@@ -234,26 +234,6 @@ export function isGreaterThan(a: number, b: number): boolean { return a > b; }
 export function isLessThanOrEqual(a: number, b: number): boolean { return a <= b; }
 export function isGreaterThanOrEqual(a: number, b: number): boolean { return a >= b; }
 
-// < operator
-export function isLessThan(a: number, b: number): boolean {
-  return a < b;
-}
-
-// > operator
-export function isGreaterThan(a: number, b: number): boolean {
-  return a > b;
-}
-
-// <= operator
-export function isLessThanOrEqual(a: number, b: number): boolean {
-  return a <= b;
-}
-
-// >= operator
-export function isGreaterThanOrEqual(a: number, b: number): boolean {
-  return a >= b;
-}
-
 // ===== All logical operators - Explicit combinations =====
 
 // AND operator - all 4 combinations

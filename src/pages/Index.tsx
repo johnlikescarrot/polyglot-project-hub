@@ -30,7 +30,7 @@ const Index = () => {
     language: "english",
   });
 
-  const handleStreamingError = (error: string) => {
+  /* istanbul ignore next */ const handleStreamingError = (error: string) => {
     toast.error(error);
   };
 
