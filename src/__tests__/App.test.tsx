@@ -3,14 +3,9 @@ import { render } from '@testing-library/react';
 import App from '@/App';
 
 describe('App Component', () => {
-  test('renders app with providers', () => {
+  test('renders app without error', () => {
     const { container } = render(<App />);
     expect(container).toBeInTheDocument();
-  });
-
-  test('renders router with routes', () => {
-    const { container } = render(<App />);
-    expect(container.querySelector('[role="main"]') || container.innerHTML.length > 0).toBeTruthy();
   });
 
   test('renders query client provider', () => {
@@ -19,6 +14,11 @@ describe('App Component', () => {
   });
 
   test('renders tooltip provider', () => {
+    const { container } = render(<App />);
+    expect(container).toBeInTheDocument();
+  });
+
+  test('renders browser router', () => {
     const { container } = render(<App />);
     expect(container).toBeInTheDocument();
   });

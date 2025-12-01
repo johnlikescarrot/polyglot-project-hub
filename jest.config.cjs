@@ -32,6 +32,12 @@ module.exports = {
     '^.+\\.tsx?$': ['ts-jest', {
       tsconfig: 'tsconfig.jest.json',
       isolatedModules: true,
+      useESM: false,
     }],
+  },
+  globals: {
+    'ts-jest': {
+      useESM: false,
+    },
   },
 };

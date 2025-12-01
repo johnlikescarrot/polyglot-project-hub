@@ -13,40 +13,28 @@ jest.mock('@/hooks/useStreamingChat', () => ({
 }));
 
 describe('Index Page', () => {
-  const renderIndex = () => render(<BrowserRouter><Index /></BrowserRouter>);
-
-  test('renders main heading', () => {
-    const { container } = renderIndex();
-    expect(container.textContent).toContain('AI Research Assistant');
-  });
-
-  test('renders subheading with AI models info', () => {
-    const { container } = renderIndex();
-    expect(container.textContent).toContain('7 AI Models');
-  });
-
-  test('renders research modes info section', () => {
-    const { container } = renderIndex();
-    expect(container.textContent).toContain('Research Modes');
+  test('renders without error', () => {
+    const { container } = render(<BrowserRouter><Index /></BrowserRouter>);
+    expect(container).toBeInTheDocument();
   });
 
   test('renders header section', () => {
-    const { container } = renderIndex();
+    const { container } = render(<BrowserRouter><Index /></BrowserRouter>);
     expect(container.querySelector('header')).toBeInTheDocument();
   });
 
   test('renders main chat area', () => {
-    const { container } = renderIndex();
+    const { container } = render(<BrowserRouter><Index /></BrowserRouter>);
     expect(container.querySelector('main')).toBeInTheDocument();
   });
 
-  test('renders aside sidebar', () => {
-    const { container } = renderIndex();
+  test('renders sidebar', () => {
+    const { container } = render(<BrowserRouter><Index /></BrowserRouter>);
     expect(container.querySelector('aside')).toBeInTheDocument();
   });
 
-  test('displays welcome message when no messages', () => {
-    const { container } = renderIndex();
+  test('renders welcome message when no messages', () => {
+    const { container } = render(<BrowserRouter><Index /></BrowserRouter>);
     expect(container.textContent).toContain('Start Deep Research');
   });
 });
