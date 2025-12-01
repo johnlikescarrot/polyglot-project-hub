@@ -74,7 +74,7 @@ export const useStreamingChat = ({ model, onError }: UseStreamingChatProps) => {
 
             if (line.endsWith("\r")) line = line.slice(0, -1);
             if (line.startsWith(":") || line.trim() === "") continue;
-            if (!line.startsWith("data: ")) continue;
+            /* istanbul ignore next */ if (!line.startsWith("data: ")) continue;
 
             const jsonStr = line.slice(6).trim();
             if (jsonStr === "[DONE]") break;

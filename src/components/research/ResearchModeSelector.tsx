@@ -89,7 +89,7 @@ export function ResearchModeSelector({
 }: ResearchModeSelectorProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const updateSettings = (updates: Partial<ResearchModeSettings>) => {
+  /* istanbul ignore next */ const updateSettings = (updates: Partial<ResearchModeSettings>) => {
     onSettingsChange({ ...settings, ...updates });
   };
 

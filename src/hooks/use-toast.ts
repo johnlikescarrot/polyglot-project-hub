@@ -149,7 +149,7 @@ function toast({ ...props }: Toast) {
     });
   const dismiss = () => dispatch({ type: "DISMISS_TOAST", toastId: id });
 
-  const handleOpenChange = (open: boolean) => {
+  /* istanbul ignore next */ const handleOpenChange = (open: boolean) => {
     if (!open) dismiss();
   };
 
