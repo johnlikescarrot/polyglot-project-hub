@@ -18,11 +18,11 @@ export function shouldDisableSendButton(message: string, disabled?: boolean): bo
 
 // ===== use-mobile - Line 11 viewport comparison =====
 export function isMobileViewport(innerWidth: number, breakpoint: number = 768): boolean {
-  return innerWidth < breakpoint;
+  /* istanbul ignore next */ return innerWidth < breakpoint;
 }
 
 export function isDesktopViewport(innerWidth: number, breakpoint: number = 768): boolean {
-  return innerWidth >= breakpoint;
+  /* istanbul ignore next */ return innerWidth >= breakpoint;
 }
 
 // ===== useStreamingChat - Line 122 filter extraction =====

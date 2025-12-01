@@ -26,5 +26,5 @@ export function getModeDescription(reportType: ReportType): string {
   if (reportType === ReportType.OutlineReport) {
     return "Provides a structured outline for your research topic, perfect for planning further investigation.";
   }
-  /* istanbul ignore next */ return /* istanbul ignore next */ "";
+  /* istanbul ignore next */ return "";
 }

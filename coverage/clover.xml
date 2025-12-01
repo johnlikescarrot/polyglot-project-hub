@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1764602349580" clover="3.2.0">
-  <project timestamp="1764602349580" name="All files">
-    <metrics statements="656" coveredstatements="648" conditionals="234" coveredconditionals="224" methods="151" coveredmethods="148" elements="1041" coveredelements="1020" complexity="0" loc="656" ncloc="656" packages="6" files="28" classes="28"/>
+<coverage generated="1764602698694" clover="3.2.0">
+  <project timestamp="1764602698694" name="All files">
+    <metrics statements="654" coveredstatements="646" conditionals="231" coveredconditionals="223" methods="151" coveredmethods="148" elements="1036" coveredelements="1017" complexity="0" loc="654" ncloc="654" packages="6" files="28" classes="28"/>
     <package name="src">
       <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="App.tsx" path="/home/runner/workspace/src/App.tsx">
@@ -326,7 +326,7 @@
       </file>
     </package>
     <package name="src.lib">
-      <metrics statements="359" coveredstatements="359" conditionals="131" coveredconditionals="127" methods="75" coveredmethods="75"/>
+      <metrics statements="357" coveredstatements="357" conditionals="128" coveredconditionals="126" methods="75" coveredmethods="75"/>
       <file name="aiModels.ts" path="/home/runner/workspace/src/lib/aiModels.ts">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
         <line num="11" count="7" type="stmt"/>
@@ -409,7 +409,7 @@
         <line num="104" count="3" type="stmt"/>
       </file>
       <file name="coverage-extractors.ts" path="/home/runner/workspace/src/lib/coverage-extractors.ts">
-        <metrics statements="129" coveredstatements="129" conditionals="14" coveredconditionals="12" methods="15" coveredmethods="15"/>
+        <metrics statements="127" coveredstatements="127" conditionals="14" coveredconditionals="12" methods="15" coveredmethods="15"/>
         <line num="7" count="19" type="stmt"/>
         <line num="8" count="7" type="stmt"/>
         <line num="9" count="7" type="stmt"/>
@@ -419,9 +419,7 @@
         <line num="15" count="19" type="stmt"/>
         <line num="16" count="81" type="cond" truecount="2" falsecount="0"/>
         <line num="20" count="19" type="cond" truecount="0" falsecount="1"/>
-        <line num="21" count="7" type="stmt"/>
         <line num="24" count="19" type="cond" truecount="0" falsecount="1"/>
-        <line num="25" count="2" type="stmt"/>
         <line num="29" count="19" type="stmt"/>
         <line num="35" count="4" type="stmt"/>
         <line num="36" count="4" type="stmt"/>
@@ -623,7 +621,7 @@
         <line num="43" count="1" type="stmt"/>
       </file>
       <file name="researchPrompts.ts" path="/home/runner/workspace/src/lib/researchPrompts.ts">
-        <metrics statements="51" coveredstatements="51" conditionals="65" coveredconditionals="63" methods="27" coveredmethods="27"/>
+        <metrics statements="51" coveredstatements="51" conditionals="62" coveredconditionals="62" methods="27" coveredmethods="27"/>
         <line num="17" count="6" type="stmt"/>
         <line num="27" count="20" type="stmt"/>
         <line num="63" count="14" type="stmt"/>

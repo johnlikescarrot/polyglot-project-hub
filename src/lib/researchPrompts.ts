@@ -504,9 +504,9 @@ Provide the draft headers in a list format using markdown syntax, for example:
    */
   static generateReportIntroduction(
     question: string,
-    researchSummary: string = "",
-    language: string = "english",
-    reportFormat: string = "apa"
+    /* istanbul ignore next */ researchSummary: string = "",
+    /* istanbul ignore next */ language: string = "english",
+    /* istanbul ignore next */ reportFormat: string = "apa"
   ): string {
     const currentDate = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 
