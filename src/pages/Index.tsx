@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ModelSelector } from "@/components/research/ModelSelector";
 import { ChatMessage } from "@/components/research/ChatMessage";
 import { ChatInput } from "@/components/research/ChatInput";
@@ -6,15 +6,24 @@ import { QuickActions } from "@/components/research/QuickActions";
 import { ResearchHistory } from "@/components/research/ResearchHistory";
 import { KeyboardShortcuts } from "@/components/research/KeyboardShortcuts";
 import { UsageStats } from "@/components/research/UsageStats";
+import { ResearchModeSelector } from "@/components/research/ResearchModeSelector";
 import { useStreamingChat } from "@/hooks/useStreamingChat";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Trash2, Sparkles } from "lucide-react";
 import { toast } from "sonner";
+import { ReportType, Tone } from "@/lib/researchTypes";
 
 const Index = () => {
   const [selectedModel, setSelectedModel] = useState("google/gemini-2.5-flash");
   const [sessionStartTime] = useState(Date.now());
+  const [researchSettings, setResearchSettings] = useState({
+    reportType: ReportType.ResearchReport,
+    reportFormat: "apa",
+    tone: Tone.Objective,
+    totalWords: 1000,
+    language: "english",
+  });
 
   const { messages, isLoading, sendMessage, clearMessages } = useStreamingChat({
     model: selectedModel,
@@ -36,7 +45,7 @@ const Index = () => {
             <KeyboardShortcuts onNewChat={clearMessages} />
           </div>
           <p className="text-muted-foreground text-lg">
-            Multi-model AI research powered by Gemini & GPT-5
+            GPT-Researcher powered • 7 AI Models • Deep Research Capabilities
           </p>
         </header>
 
@@ -44,7 +53,13 @@ const Index = () => {
           {/* Sidebar */}
           <aside className="space-y-4">
             <div className="bg-card border rounded-lg p-4 shadow-sm">
-              <ModelSelector selectedModel={selectedModel} onModelChange={setSelectedModel} />
+              <div className="space-y-3">
+                <ResearchModeSelector
+                  settings={researchSettings}
+                  onSettingsChange={setResearchSettings}
+                />
+                <ModelSelector selectedModel={selectedModel} onModelChange={setSelectedModel} />
+              </div>
             </div>
 
             {messages.length === 0 ? (
@@ -66,17 +81,12 @@ const Index = () => {
             )}
 
             <div className="bg-card border rounded-lg p-4 shadow-sm">
-              <h3 className="font-semibold mb-2">Model Categories</h3>
+              <h3 className="font-semibold mb-2">Research Modes</h3>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <div>
-                  <strong className="text-primary">Premium:</strong> Best reasoning & accuracy
-                </div>
-                <div>
-                  <strong className="text-accent">Balanced:</strong> Speed & intelligence
-                </div>
-                <div>
-                  <strong className="text-muted">Fast:</strong> Quick responses
-                </div>
+                <div>✨ <strong>Standard:</strong> Comprehensive reports</div>
+                <div>🔬 <strong>Deep:</strong> Multi-level analysis</div>
+                <div>📚 <strong>Detailed:</strong> Subtopic exploration</div>
+                <div>📝 <strong>Outline:</strong> Structured planning</div>
               </div>
             </div>
           </aside>
@@ -88,9 +98,9 @@ const Index = () => {
                 <div className="flex items-center justify-center h-full text-center">
                   <div className="max-w-md">
                     <Sparkles className="h-16 w-16 mx-auto mb-4 text-primary opacity-50" />
-                    <h2 className="text-2xl font-semibold mb-2">Start Your Research</h2>
+                    <h2 className="text-2xl font-semibold mb-2">Start Deep Research</h2>
                     <p className="text-muted-foreground">
-                      Ask any question and get comprehensive research from cutting-edge AI models
+                      Powered by ALL gpt-researcher prompts • 7 AI models • Advanced research modes
                     </p>
                   </div>
                 </div>
@@ -101,7 +111,7 @@ const Index = () => {
                   ))}
                   {isLoading && (
                     <div className="flex items-center gap-2 text-muted-foreground">
-                      <div className="animate-pulse">Researching...</div>
+                      <div className="animate-pulse">Conducting deep research...</div>
                     </div>
                   )}
                 </div>
