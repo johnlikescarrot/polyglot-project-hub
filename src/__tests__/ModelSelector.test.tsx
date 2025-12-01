@@ -24,6 +24,13 @@ describe('ModelSelector Component', () => {
     expect(container.textContent).toContain('balanced');
   });
 
+  test('displays premium category badge for premium models', () => {
+    const { container } = render(
+      <ModelSelector selectedModel="openai/gpt-5" onModelChange={jest.fn()} />
+    );
+    expect(container.textContent).toContain('premium');
+  });
+
   test('renders without crashing', () => {
     const { container } = render(
       <ModelSelector selectedModel="google/gemini-2.5-flash" onModelChange={jest.fn()} />
