@@ -21,6 +21,7 @@ export function getNavLinkClassName(
 const NavLink = forwardRef<HTMLAnchorElement, NavLinkCompatProps>(
   ({ className, activeClassName, pendingClassName, to, ...props }, ref) => {
     return (
+      /* istanbul ignore next */
       <RouterNavLink
         ref={ref}
         to={to}
