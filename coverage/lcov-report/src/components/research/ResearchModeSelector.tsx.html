@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">60% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>30/30</span>
+                <span class='fraction'>18/30</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>0/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">12.5% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>8/8</span>
+                <span class='fraction'>1/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">62.06% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>29/29</span>
+                <span class='fraction'>18/29</span>
             </div>
         
             
@@ -399,21 +399,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">89x</span>
+<span class="cline-any cline-yes">232x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">89x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">232x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">89x</span>
-<span class="cline-any cline-yes">89x</span>
-<span class="cline-any cline-yes">89x</span>
-<span class="cline-any cline-yes">89x</span>
+<span class="cline-any cline-yes">232x</span>
+<span class="cline-any cline-yes">232x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">106x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">89x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -435,11 +435,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">356x</span>
-<span class="cline-any cline-yes">356x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -469,7 +469,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">534x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -489,7 +489,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">445x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -532,7 +532,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">445x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -648,19 +648,19 @@ export function ResearchModeSelector({
 }: ResearchModeSelectorProps) {
   const [isOpen, setIsOpen] = useState(false);
 &nbsp;
-  const updateSettings = (updates: Partial&lt;ResearchModeSettings&gt;) =&gt; {
-    onSettingsChange({ ...settings, ...updates });
+  const updateSettings = <span class="fstat-no" title="function not covered" >(u</span>pdates: Partial&lt;ResearchModeSettings&gt;) =&gt; {
+<span class="cstat-no" title="statement not covered" >    onSettingsChange({ ...settings, ...updates });</span>
   };
 &nbsp;
   // Create handler functions using extractors
   const handleFormatChange = createReportFormatHandler(updateSettings);
   const handleToneChange = createToneHandler(updateSettings);
-  const handleLanguageChange = createLanguageHandler(updateSettings);
-  const handleWordsChange = createTotalWordsHandler(updateSettings);
+  const handleLanguageChange = <span class="cstat-no" title="statement not covered" >createLanguageHandler(updateSettings);</span>
+  const handleWordsChange = <span class="cstat-no" title="statement not covered" >createTotalWordsHandler(updateSettings);</span>
 &nbsp;
-  const currentMode = RESEARCH_MODES.find((m) =&gt; m.value === settings.reportType);
+  const currentMode = <span class="cstat-no" title="statement not covered" >RESEARCH_MODES.find(<span class="fstat-no" title="function not covered" >(m</span>) =&gt; <span class="cstat-no" title="statement not covered" >m.value === settings.reportType)</span>;</span>
 &nbsp;
-  return (
+<span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;Sheet open={isOpen} onOpenChange={setIsOpen}&gt;
       &lt;SheetTrigger asChild&gt;
         &lt;Button variant="outline" size="sm" className="gap-2"&gt;
@@ -681,12 +681,12 @@ export function ResearchModeSelector({
           &lt;div className="space-y-3"&gt;
             &lt;Label&gt;Research Mode&lt;/Label&gt;
             &lt;div className="grid gap-2"&gt;
-              {RESEARCH_MODES.map((mode) =&gt; {
-                const Icon = mode.icon;
-                return (
+              {RESEARCH_MODES.map(<span class="fstat-no" title="function not covered" >(m</span>ode) =&gt; {
+                const Icon = <span class="cstat-no" title="statement not covered" >mode.icon;</span>
+<span class="cstat-no" title="statement not covered" >                return (</span>
                   &lt;button
                     key={mode.value}
-                    onClick={() =&gt; updateSettings({ reportType: mode.value })}
+                    onClick={<span class="fstat-no" title="function not covered" >() =</span>&gt; <span class="cstat-no" title="statement not covered" >updateSettings({ reportType: mode.value })}</span>
                     className={`flex items-start gap-3 p-3 rounded-lg border-2 transition-colors text-left ${getModeButtonClass(
                       settings.reportType === mode.value
                     )}`}
@@ -715,8 +715,8 @@ export function ResearchModeSelector({
                 &lt;SelectValue /&gt;
               &lt;/SelectTrigger&gt;
               &lt;SelectContent&gt;
-                {REPORT_FORMATS.map((format) =&gt; (
-                  &lt;SelectItem key={format} value={format}&gt;
+                {REPORT_FORMATS.map(<span class="fstat-no" title="function not covered" >(f</span>ormat) =&gt; (
+<span class="cstat-no" title="statement not covered" >                  &lt;SelectItem key={format} v</span>alue={format}&gt;
                     {format.toUpperCase()}
                   &lt;/SelectItem&gt;
                 ))}
@@ -735,8 +735,8 @@ export function ResearchModeSelector({
                 &lt;SelectValue /&gt;
               &lt;/SelectTrigger&gt;
               &lt;SelectContent&gt;
-                {TONES.map((tone) =&gt; (
-                  &lt;SelectItem key={tone.value} value={tone.value}&gt;
+                {TONES.map(<span class="fstat-no" title="function not covered" >(t</span>one) =&gt; (
+<span class="cstat-no" title="statement not covered" >                  &lt;SelectItem key={tone.value} v</span>alue={tone.value}&gt;
                     {tone.label}
                   &lt;/SelectItem&gt;
                 ))}
@@ -778,8 +778,8 @@ export function ResearchModeSelector({
                 &lt;SelectValue /&gt;
               &lt;/SelectTrigger&gt;
               &lt;SelectContent&gt;
-                {LANGUAGES.map((lang) =&gt; (
-                  &lt;SelectItem key={lang.value} value={lang.value}&gt;
+                {LANGUAGES.map(<span class="fstat-no" title="function not covered" >(l</span>ang) =&gt; (
+<span class="cstat-no" title="statement not covered" >                  &lt;SelectItem key={lang.value} v</span>alue={lang.value}&gt;
                     {lang.label}
                   &lt;/SelectItem&gt;
                 ))}
@@ -811,7 +811,7 @@ export function ResearchModeSelector({
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-01T11:21:28.818Z
+                at 2025-12-01T11:24:16.398Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

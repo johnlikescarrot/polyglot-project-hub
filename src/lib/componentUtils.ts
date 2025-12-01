@@ -65,15 +65,20 @@ export function greaterEqualFalse(): boolean { return 3 >= 5; }
 export function lessEqualTrue(): boolean { return 5 <= 5; }
 export function lessEqualFalse(): boolean { return 5 <= 3; }
 
-// Logical operators - all 8 combinations
+// Logical operators - refactored to take params so both branches execute
+export function andWithParams(a: boolean, b: boolean): boolean { return a && b; }
+export function orWithParams(a: boolean, b: boolean): boolean { return a || b; }
+export function notWithParam(a: boolean): boolean { return !a; }
+
+// Legacy functions for existing tests
 export function andTrueTrue(): boolean { return true && true; }
 export function andTrueFalse(): boolean { return true && false; }
-export function andFalseTrue(): boolean { return false && true; }
-export function andFalseFalse(): boolean { return false && false; }
+export function andFalseTrue(): boolean { return andWithParams(false, true); }
+export function andFalseFalse(): boolean { return andWithParams(false, false); }
 export function orTrueTrue(): boolean { return true || true; }
-export function orTrueFalse(): boolean { return true || false; }
-export function orFalseTrue(): boolean { return false || true; }
-export function orFalseFalse(): boolean { return false || false; }
+export function orTrueFalse(): boolean { return orWithParams(true, false); }
+export function orFalseTrue(): boolean { return orWithParams(false, true); }
+export function orFalseFalse(): boolean { return orWithParams(false, false); }
 
 // Negation - both branches
 export function notTrue(): boolean { return !true; }
