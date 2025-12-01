@@ -1,6 +1,7 @@
+/// <reference types="jest" />
 import { render, screen } from '@testing-library/react';
 import { ChatMessage } from '@/components/research/ChatMessage';
-import { Message } from '@/hooks/useStreamingChat';
+import type { Message } from '@/hooks/useStreamingChat';
 
 describe('ChatMessage Component', () => {
   test('renders user message', () => {
@@ -12,17 +13,17 @@ describe('ChatMessage Component', () => {
     expect(screen.getByText('Test message')).toBeInTheDocument();
   });
 
-  test('renders assistant message', () => {
+  test('renders assistant message with markdown', () => {
     const message: Message = {
       role: 'assistant',
-      content: '# Header\nTest content',
+      content: '# Header\nContent',
       model: 'google/gemini-2.5-flash',
     };
     render(<ChatMessage message={message} />);
     expect(screen.getByText(/Header/)).toBeInTheDocument();
   });
 
-  test('shows model info for assistant messages', () => {
+  test('shows model info for assistant', () => {
     const message: Message = {
       role: 'assistant',
       content: 'Test',
@@ -32,7 +33,7 @@ describe('ChatMessage Component', () => {
     expect(screen.getByText(/gemini-2.5-flash/)).toBeInTheDocument();
   });
 
-  test('does not show model info for user messages', () => {
+  test('hides model info for user', () => {
     const message: Message = {
       role: 'user',
       content: 'Test',
@@ -40,5 +41,14 @@ describe('ChatMessage Component', () => {
     };
     render(<ChatMessage message={message} />);
     expect(screen.queryByText(/gemini-2.5-flash/)).not.toBeInTheDocument();
+  });
+
+  test('renders with correct styling', () => {
+    const message: Message = {
+      role: 'user',
+      content: 'Test',
+    };
+    const { container } = render(<ChatMessage message={message} />);
+    expect(container.querySelector('.flex')).toBeInTheDocument();
   });
 });

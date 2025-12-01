@@ -1,3 +1,4 @@
+/// <reference types="jest" />
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import NotFound from '@/pages/NotFound';
@@ -29,5 +30,14 @@ describe('NotFound Page', () => {
     );
     const link = screen.getByRole('link');
     expect(link).toHaveAttribute('href', '/');
+  });
+
+  test('renders in center', () => {
+    const { container } = render(
+      <BrowserRouter>
+        <NotFound />
+      </BrowserRouter>
+    );
+    expect(container.querySelector('.flex')).toBeInTheDocument();
   });
 });

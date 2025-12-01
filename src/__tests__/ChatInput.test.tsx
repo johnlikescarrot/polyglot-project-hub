@@ -1,9 +1,10 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+/// <reference types="jest" />
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ChatInput } from '@/components/research/ChatInput';
 
 describe('ChatInput Component', () => {
-  test('renders textarea and button', () => {
+  test('renders textarea and send button', () => {
     render(<ChatInput onSend={jest.fn()} />);
     expect(screen.getByPlaceholderText(/research question/i)).toBeInTheDocument();
     expect(screen.getByRole('button')).toBeInTheDocument();
@@ -17,13 +18,13 @@ describe('ChatInput Component', () => {
     const textarea = screen.getByPlaceholderText(/research question/i);
     const button = screen.getByRole('button');
     
-    await user.type(textarea, 'Test');
+    await user.type(textarea, 'Test message');
     await user.click(button);
     
-    expect(onSend).toHaveBeenCalledWith('Test');
+    expect(onSend).toHaveBeenCalledWith('Test message');
   });
 
-  test('sends on Enter key press', async () => {
+  test('sends on Enter key', async () => {
     const onSend = jest.fn();
     const user = userEvent.setup();
     render(<ChatInput onSend={onSend} />);
@@ -34,12 +35,12 @@ describe('ChatInput Component', () => {
     expect(onSend).toHaveBeenCalledWith('Test');
   });
 
-  test('disables button when disabled prop true', () => {
-    render(<ChatInput onSend={jest.fn()} disabled={true} />);
+  test('disables when disabled prop is true', () => {
+    render(<ChatInput onSend={jest.fn()} disabled />);
     expect(screen.getByRole('button')).toBeDisabled();
   });
 
-  test('trims message before sending', async () => {
+  test('trims messages before sending', async () => {
     const onSend = jest.fn();
     const user = userEvent.setup();
     render(<ChatInput onSend={onSend} />);
@@ -64,5 +65,17 @@ describe('ChatInput Component', () => {
     await user.click(button);
     
     expect(textarea.value).toBe('');
+  });
+
+  test('does not send empty messages', async () => {
+    const onSend = jest.fn();
+    const user = userEvent.setup();
+    render(<ChatInput onSend={onSend} />);
+    
+    const button = screen.getByRole('button');
+    expect(button).toBeDisabled();
+    
+    await user.click(button);
+    expect(onSend).not.toHaveBeenCalled();
   });
 });
