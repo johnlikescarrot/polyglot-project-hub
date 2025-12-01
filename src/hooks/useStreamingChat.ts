@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import { getEnv } from "@/lib/env";
 
 export interface Message {
   role: "user" | "assistant";
@@ -30,13 +31,14 @@ export const useStreamingChat = ({ model, onError }: UseStreamingChatProps) => {
       let assistantContent = "";
 
       try {
-        const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/ai-research`;
+        const env = getEnv();
+        const CHAT_URL = `${env.VITE_SUPABASE_URL}/functions/v1/ai-research`;
 
         const response = await fetch(CHAT_URL, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+            Authorization: `Bearer ${env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
           },
           body: JSON.stringify({
             messages: [...messages, newUserMessage],
