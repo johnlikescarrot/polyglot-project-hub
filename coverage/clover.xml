@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1764574375234" clover="3.2.0">
-  <project timestamp="1764574375234" name="All files">
-    <metrics statements="388" coveredstatements="357" conditionals="204" coveredconditionals="168" methods="118" coveredmethods="107" elements="710" coveredelements="632" complexity="0" loc="388" ncloc="388" packages="6" files="20" classes="20"/>
+<coverage generated="1764574517727" clover="3.2.0">
+  <project timestamp="1764574517727" name="All files">
+    <metrics statements="387" coveredstatements="343" conditionals="204" coveredconditionals="162" methods="117" coveredmethods="103" elements="708" coveredelements="608" complexity="0" loc="387" ncloc="387" packages="6" files="20" classes="20"/>
     <package name="src">
       <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="App.tsx" path="/home/runner/workspace/src/App.tsx">
@@ -300,7 +300,7 @@
       </file>
     </package>
     <package name="src.lib">
-      <metrics statements="110" coveredstatements="108" conditionals="89" coveredconditionals="79" methods="42" coveredmethods="42"/>
+      <metrics statements="109" coveredstatements="94" conditionals="89" coveredconditionals="73" methods="41" coveredmethods="38"/>
       <file name="aiModels.ts" path="/home/runner/workspace/src/lib/aiModels.ts">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
         <line num="11" count="6" type="stmt"/>
@@ -310,23 +310,22 @@
         <line num="82" count="28" type="stmt"/>
       </file>
       <file name="env.ts" path="/home/runner/workspace/src/lib/env.ts">
-        <metrics statements="16" coveredstatements="14" conditionals="10" coveredconditionals="6" methods="4" coveredmethods="4"/>
-        <line num="7" count="3" type="stmt"/>
-        <line num="9" count="3" type="stmt"/>
-        <line num="10" count="12" type="cond" truecount="2" falsecount="0"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="14" count="11" type="stmt"/>
-        <line num="15" count="11" type="stmt"/>
-        <line num="20" count="11" type="cond" truecount="4" falsecount="0"/>
-        <line num="21" count="10" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
+        <metrics statements="15" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="20" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
-        <line num="35" count="1" type="stmt"/>
-        <line num="43" count="1" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
         <line num="44" count="0" type="stmt"/>
-        <line num="47" count="3" type="stmt"/>
-        <line num="48" count="9" type="stmt"/>
       </file>
       <file name="researchPrompts.ts" path="/home/runner/workspace/src/lib/researchPrompts.ts">
         <metrics statements="55" coveredstatements="55" conditionals="73" coveredconditionals="67" methods="30" coveredmethods="30"/>
@@ -421,10 +420,10 @@
       </file>
       <file name="utils.ts" path="/home/runner/workspace/src/lib/utils.ts">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="18" type="stmt"/>
-        <line num="2" count="18" type="stmt"/>
-        <line num="4" count="18" type="stmt"/>
-        <line num="5" count="1650" type="stmt"/>
+        <line num="1" count="16" type="stmt"/>
+        <line num="2" count="16" type="stmt"/>
+        <line num="4" count="16" type="stmt"/>
+        <line num="5" count="1636" type="stmt"/>
       </file>
     </package>
     <package name="src.pages">

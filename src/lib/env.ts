@@ -26,7 +26,8 @@ function loadEnv(): Environment {
 
   // Vite production environment - lazy access at runtime
   try {
-    const env = getImportMetaEnv();
+    const fn = new Function('return import.meta.env');
+    const env = fn();
     return {
       VITE_SUPABASE_URL: env?.VITE_SUPABASE_URL || '',
       VITE_SUPABASE_PUBLISHABLE_KEY: env?.VITE_SUPABASE_PUBLISHABLE_KEY || '',
@@ -37,11 +38,6 @@ function loadEnv(): Environment {
       VITE_SUPABASE_PUBLISHABLE_KEY: '',
     };
   }
-}
-
-function getImportMetaEnv() {
-  const fn = new Function('return import.meta.env');
-  return fn();
 }
 
 export function resetEnv(): void {
