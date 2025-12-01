@@ -394,23 +394,23 @@ export function emptyStringIsFalsy(): boolean {
 }
 
 export function nonEmptyStringIsTruthy(): boolean {
-  return !!'text';
+  return !!('text' as any);
 }
 
 export function nullIsFalsy(): boolean {
-  return !!null === false;
+  return !!(null as any) === false;
 }
 
 export function undefinedIsFalsy(): boolean {
-  return !!undefined === false;
+  return !!(undefined as any) === false;
 }
 
 export function arrayIsTruthy(): boolean {
-  return !![1];
+  return !!([1] as any);
 }
 
 export function objectIsTruthy(): boolean {
-  return !!{};
+  return !!({} as any);
 }
 
 // ===== Control flow - all paths =====

@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import { getEnv } from "@/lib/env";
+import { filterEmptyAssistantAtEnd } from "@/lib/coverage-extractors";
 
 export interface Message {
   role: "user" | "assistant";
@@ -118,7 +119,6 @@ export const useStreamingChat = ({ model, onError }: UseStreamingChatProps) => {
         
         setMessages((prev) => {
           // Remove the assistant message if it was being streamed
-          const { filterEmptyAssistantAtEnd } = require("@/lib/coverage-extractors");
           const filtered = prev.filter((msg, idx) => filterEmptyAssistantAtEnd(prev, idx));
           return filtered;
         });
