@@ -33,6 +33,35 @@ interface ResearchModeSelectorProps {
   onSettingsChange: (settings: ResearchModeSettings) => void;
 }
 
+export function getModeButtonClass(isSelected: boolean): string {
+  return isSelected
+    ? "border-primary bg-primary/5"
+    : "border-border hover:border-primary/50";
+}
+
+export function shouldShowModeDescription(reportType: ReportType): boolean {
+  return reportType === ReportType.DeepResearch ||
+    reportType === ReportType.ResearchReport ||
+    reportType === ReportType.DetailedReport ||
+    reportType === ReportType.OutlineReport;
+}
+
+export function getModeDescription(reportType: ReportType): string {
+  if (reportType === ReportType.DeepResearch) {
+    return "Conducts multi-level hierarchical research, following interesting threads and synthesizing insights from multiple research depths.";
+  }
+  if (reportType === ReportType.ResearchReport) {
+    return "Generates a comprehensive, well-structured research report with citations and references.";
+  }
+  if (reportType === ReportType.DetailedReport) {
+    return "Creates an in-depth report with multiple subtopics, each thoroughly researched and analyzed.";
+  }
+  if (reportType === ReportType.OutlineReport) {
+    return "Provides a structured outline for your research topic, perfect for planning further investigation.";
+  }
+  return "";
+}
+
 const RESEARCH_MODES = [
   {
     value: ReportType.ResearchReport,
@@ -115,11 +144,9 @@ export function ResearchModeSelector({
                   <button
                     key={mode.value}
                     onClick={() => updateSettings({ reportType: mode.value })}
-                    className={`flex items-start gap-3 p-3 rounded-lg border-2 transition-colors text-left ${
+                    className={`flex items-start gap-3 p-3 rounded-lg border-2 transition-colors text-left ${getModeButtonClass(
                       settings.reportType === mode.value
-                        ? "border-primary bg-primary/5"
-                        : "border-border hover:border-primary/50"
-                    }`}
+                    )}`}
                   >
                     <Icon className="h-5 w-5 mt-0.5 text-primary" />
                     <div className="flex-1">
@@ -218,21 +245,14 @@ export function ResearchModeSelector({
           </div>
 
           {/* Mode Description */}
-          {currentMode && (
+          {currentMode && shouldShowModeDescription(currentMode.value) && (
             <div className="p-4 rounded-lg bg-muted/50 border">
               <div className="flex items-center gap-2 mb-2">
                 <currentMode.icon className="h-4 w-4 text-primary" />
                 <span className="font-medium">About {currentMode.label}</span>
               </div>
               <p className="text-sm text-muted-foreground">
-                {currentMode.value === ReportType.DeepResearch &&
-                  "Conducts multi-level hierarchical research, following interesting threads and synthesizing insights from multiple research depths."}
-                {currentMode.value === ReportType.ResearchReport &&
-                  "Generates a comprehensive, well-structured research report with citations and references."}
-                {currentMode.value === ReportType.DetailedReport &&
-                  "Creates an in-depth report with multiple subtopics, each thoroughly researched and analyzed."}
-                {currentMode.value === ReportType.OutlineReport &&
-                  "Provides a structured outline for your research topic, perfect for planning further investigation."}
+                {getModeDescription(currentMode.value)}
               </p>
             </div>
           )}

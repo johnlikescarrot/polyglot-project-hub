@@ -14,6 +14,10 @@ import { Trash2, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { ReportType, Tone } from "@/lib/researchTypes";
 
+export function shouldShowQuickActions(messagesLength: number): boolean {
+  return messagesLength === 0;
+}
+
 const Index = () => {
   const [selectedModel, setSelectedModel] = useState("google/gemini-2.5-flash");
   const [sessionStartTime] = useState(Date.now());
@@ -62,7 +66,7 @@ const Index = () => {
               </div>
             </div>
 
-            {messages.length === 0 ? (
+            {shouldShowQuickActions(messages.length) ? (
               <QuickActions onQuickQuery={sendMessage} disabled={isLoading} />
             ) : (
               <>
