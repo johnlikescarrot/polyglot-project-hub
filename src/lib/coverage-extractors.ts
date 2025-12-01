@@ -227,9 +227,12 @@ export function createTotalWordsHandler(updateSettings: (updates: any) => void):
   };
 }
 
-export function isNotEqual(a: any, b: any): boolean {
-  return a !== b;
-}
+export function isEqual(a: any, b: any): boolean { return a === b; }
+export function isNotEqual(a: any, b: any): boolean { return a !== b; }
+export function isLessThan(a: number, b: number): boolean { return a < b; }
+export function isGreaterThan(a: number, b: number): boolean { return a > b; }
+export function isLessThanOrEqual(a: number, b: number): boolean { return a <= b; }
+export function isGreaterThanOrEqual(a: number, b: number): boolean { return a >= b; }
 
 // < operator
 export function isLessThan(a: number, b: number): boolean {
