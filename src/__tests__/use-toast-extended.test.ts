@@ -105,14 +105,26 @@ describe('use-toast reducer - extended', () => {
     expect(newState).toBeTruthy();
   });
 
-  test('complex toast with all properties', () => {
+  test('complex toast with all valid properties', () => {
     const state = { toasts: [] };
     const toast = {
       id: '1',
       title: 'Title',
       description: 'Description',
       open: true,
-      variant: 'default',
+      variant: 'default' as const,
+    };
+    const newState = reducer(state, { type: 'ADD_TOAST', toast });
+    expect(newState).toBeTruthy();
+  });
+
+  test('toast with destructive variant', () => {
+    const state = { toasts: [] };
+    const toast = {
+      id: '1',
+      title: 'Error',
+      open: true,
+      variant: 'destructive' as const,
     };
     const newState = reducer(state, { type: 'ADD_TOAST', toast });
     expect(newState).toBeTruthy();
