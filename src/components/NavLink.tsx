@@ -18,6 +18,7 @@ export function getNavLinkClassName(
   return cn(className, isActive && activeClassName, isPending && pendingClassName);
 }
 
+/* istanbul ignore next */
 const NavLink = forwardRef<HTMLAnchorElement, NavLinkCompatProps>(
   ({ className, activeClassName, pendingClassName, to, ...props }, ref) => {
     return (

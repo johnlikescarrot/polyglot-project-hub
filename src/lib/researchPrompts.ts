@@ -390,7 +390,8 @@ ${data}
    * SUBTOPIC REPORT PROMPT
    * Writes individual subtopic sections
    */
-  /* istanbul ignore next */ static generateSubtopicReportPrompt(
+  /* istanbul ignore next */
+  static generateSubtopicReportPrompt(
     currentSubtopic: string,
     existingHeaders: string[],
     relevantWrittenContents: string[],
