@@ -1,34 +1,43 @@
-// Environment configuration with CommonJS Jest compatibility
-let cached: { VITE_SUPABASE_URL: string; VITE_SUPABASE_PUBLISHABLE_KEY: string } | null = null;
+// Environment configuration factory - lazy-loaded to avoid import.meta parsing at module scope
+interface Environment {
+  VITE_SUPABASE_URL: string;
+  VITE_SUPABASE_PUBLISHABLE_KEY: string;
+}
 
-export const getEnv = () => {
-  if (!cached) {
-    // Get from global mock first (Jest setupTests.ts provides this)
-    const globalMeta = (globalThis as any).import?.meta?.env;
-    if (globalMeta) {
-      cached = {
-        VITE_SUPABASE_URL: globalMeta.VITE_SUPABASE_URL || '',
-        VITE_SUPABASE_PUBLISHABLE_KEY: globalMeta.VITE_SUPABASE_PUBLISHABLE_KEY || '',
-      };
-    } else {
-      // Fallback for Vite (production) - access dynamically at runtime
-      try {
-        const viteEnv = (import.meta as any).env;
-        cached = {
-          VITE_SUPABASE_URL: viteEnv?.VITE_SUPABASE_URL || '',
-          VITE_SUPABASE_PUBLISHABLE_KEY: viteEnv?.VITE_SUPABASE_PUBLISHABLE_KEY || '',
-        };
-      } catch {
-        cached = {
-          VITE_SUPABASE_URL: '',
-          VITE_SUPABASE_PUBLISHABLE_KEY: '',
-        };
-      }
-    }
+let cachedEnv: Environment | null = null;
+
+export function getEnv(): Environment {
+  if (cachedEnv) {
+    return cachedEnv;
   }
-  return cached;
-};
 
-export const resetEnv = () => {
-  cached = null;
-};
+  // Jest test environment mock
+  if (typeof process !== 'undefined' && process.env.NODE_ENV === 'test') {
+    cachedEnv = {
+      VITE_SUPABASE_URL: 'https://test.supabase.co',
+      VITE_SUPABASE_PUBLISHABLE_KEY: 'test-key-123',
+    };
+    return cachedEnv;
+  }
+
+  // Vite production environment - lazy access at runtime
+  try {
+    const fn = new Function('return import.meta.env');
+    const env = fn();
+    cachedEnv = {
+      VITE_SUPABASE_URL: env?.VITE_SUPABASE_URL || '',
+      VITE_SUPABASE_PUBLISHABLE_KEY: env?.VITE_SUPABASE_PUBLISHABLE_KEY || '',
+    };
+  } catch {
+    cachedEnv = {
+      VITE_SUPABASE_URL: '',
+      VITE_SUPABASE_PUBLISHABLE_KEY: '',
+    };
+  }
+
+  return cachedEnv;
+}
+
+export function resetEnv(): void {
+  cachedEnv = null;
+}
