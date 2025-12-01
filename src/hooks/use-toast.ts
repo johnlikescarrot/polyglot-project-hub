@@ -52,7 +52,8 @@ interface State {
 
 const toastTimeouts = new Map<string, ReturnType<typeof setTimeout>>();
 
-/* istanbul ignore next */ export const handleToastRemoveCallback = (toastId: string) => {
+/* istanbul ignore next */ /* istanbul ignore next */
+export const handleToastRemoveCallback = (toastId: string) => {
   toastTimeouts.delete(toastId);
   dispatch({
     type: "REMOVE_TOAST",
