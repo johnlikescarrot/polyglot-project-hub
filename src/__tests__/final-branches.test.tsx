@@ -40,7 +40,7 @@ describe('Final Branch Coverage', () => {
     test('NavLink rendering', () => {
       const { container } = render(
         <BrowserRouter>
-          <NavLink to="/" label="Test" />
+          <NavLink to="/">Test</NavLink>
         </BrowserRouter>
       );
       expect(container.querySelector('a')).toBeInTheDocument();
