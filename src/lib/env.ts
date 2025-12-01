@@ -1,4 +1,4 @@
-// Environment configuration factory - lazy-loaded to avoid import.meta parsing at module scope
+// Environment configuration factory - fully testable, no import.meta runtime
 interface Environment {
   VITE_SUPABASE_URL: string;
   VITE_SUPABASE_PUBLISHABLE_KEY: string;
@@ -16,28 +16,37 @@ export function getEnv(): Environment {
 }
 
 function loadEnv(): Environment {
-  // Jest test environment mock
-  if (typeof process !== 'undefined' && process.env.NODE_ENV === 'test') {
-    return {
-      VITE_SUPABASE_URL: 'https://test.supabase.co',
-      VITE_SUPABASE_PUBLISHABLE_KEY: 'test-key-123',
-    };
+  // Check for Vite-injected environment variables (available in both browser and Node.js)
+  const url = getEnvironmentVariable('VITE_SUPABASE_URL');
+  const key = getEnvironmentVariable('VITE_SUPABASE_PUBLISHABLE_KEY');
+
+  if (url && key) {
+    return { VITE_SUPABASE_URL: url, VITE_SUPABASE_PUBLISHABLE_KEY: key };
   }
 
-  // Vite production environment - lazy access at runtime
-  try {
-    const fn = new Function('return import.meta.env');
-    const env = fn();
-    return {
-      VITE_SUPABASE_URL: env?.VITE_SUPABASE_URL || '',
-      VITE_SUPABASE_PUBLISHABLE_KEY: env?.VITE_SUPABASE_PUBLISHABLE_KEY || '',
-    };
-  } catch {
-    return {
-      VITE_SUPABASE_URL: '',
-      VITE_SUPABASE_PUBLISHABLE_KEY: '',
-    };
+  return {
+    VITE_SUPABASE_URL: url || '',
+    VITE_SUPABASE_PUBLISHABLE_KEY: key || '',
+  };
+}
+
+function getEnvironmentVariable(key: string): string {
+  // Try process.env first (Node.js/test environment)
+  if (typeof process !== 'undefined' && process.env[key]) {
+    return process.env[key] || '';
   }
+
+  // Try window.__ENV (Vite-injected in browser)
+  if (typeof window !== 'undefined' && (window as any).__ENV?.[key]) {
+    return (window as any).__ENV[key];
+  }
+
+  // Try globalThis (for universal JavaScript)
+  if (typeof globalThis !== 'undefined' && (globalThis as any)[key]) {
+    return (globalThis as any)[key];
+  }
+
+  return '';
 }
 
 export function resetEnv(): void {
