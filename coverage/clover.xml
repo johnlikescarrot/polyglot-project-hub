@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1764602859773" clover="3.2.0">
-  <project timestamp="1764602859773" name="All files">
-    <metrics statements="654" coveredstatements="646" conditionals="231" coveredconditionals="223" methods="151" coveredmethods="148" elements="1036" coveredelements="1017" complexity="0" loc="654" ncloc="654" packages="6" files="28" classes="28"/>
+<coverage generated="1764603020307" clover="3.2.0">
+  <project timestamp="1764603020307" name="All files">
+    <metrics statements="647" coveredstatements="646" conditionals="225" coveredconditionals="223" methods="148" coveredmethods="146" elements="1020" coveredelements="1015" complexity="0" loc="647" ncloc="647" packages="5" files="27" classes="27"/>
     <package name="src">
       <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="App.tsx" path="/home/runner/workspace/src/App.tsx">
@@ -17,19 +17,6 @@
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="5" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="src.components">
-      <metrics statements="7" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="NavLink.tsx" path="/home/runner/workspace/src/components/NavLink.tsx">
-        <metrics statements="7" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="18" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.components.research">
@@ -326,7 +313,7 @@
       </file>
     </package>
     <package name="src.lib">
-      <metrics statements="357" coveredstatements="357" conditionals="128" coveredconditionals="126" methods="75" coveredmethods="75"/>
+      <metrics statements="357" coveredstatements="357" conditionals="126" coveredconditionals="126" methods="73" coveredmethods="73"/>
       <file name="aiModels.ts" path="/home/runner/workspace/src/lib/aiModels.ts">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
         <line num="11" count="7" type="stmt"/>
@@ -409,7 +396,7 @@
         <line num="104" count="3" type="stmt"/>
       </file>
       <file name="coverage-extractors.ts" path="/home/runner/workspace/src/lib/coverage-extractors.ts">
-        <metrics statements="127" coveredstatements="127" conditionals="14" coveredconditionals="12" methods="15" coveredmethods="15"/>
+        <metrics statements="127" coveredstatements="127" conditionals="12" coveredconditionals="12" methods="13" coveredmethods="13"/>
         <line num="7" count="19" type="stmt"/>
         <line num="8" count="7" type="stmt"/>
         <line num="9" count="7" type="stmt"/>
@@ -418,8 +405,8 @@
         <line num="12" count="7" type="cond" truecount="2" falsecount="0"/>
         <line num="15" count="19" type="stmt"/>
         <line num="16" count="81" type="cond" truecount="2" falsecount="0"/>
-        <line num="20" count="19" type="cond" truecount="0" falsecount="1"/>
-        <line num="24" count="19" type="cond" truecount="0" falsecount="1"/>
+        <line num="20" count="19" type="stmt"/>
+        <line num="24" count="19" type="stmt"/>
         <line num="29" count="19" type="stmt"/>
         <line num="35" count="4" type="stmt"/>
         <line num="36" count="4" type="stmt"/>

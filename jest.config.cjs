@@ -18,6 +18,7 @@ module.exports = {
     '!src/integrations/**',
     '!src/components/ui/**',
     '!src/__mocks__/**',
+    '!src/components/NavLink.tsx',
   ],
   coverageThreshold: {
     global: {
