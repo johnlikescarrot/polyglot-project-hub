@@ -13,7 +13,6 @@ export const ChatInput = ({ onSend, disabled }: ChatInputProps) => {
   const [message, setMessage] = useState("");
 
   const handleSend = () => {
-    // istanbul ignore next - disabled prop injected from parent component state
     if (validateMessageForSend(message, disabled)) {
       onSend(message.trim());
       setMessage("");

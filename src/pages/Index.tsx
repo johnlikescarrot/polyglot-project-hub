@@ -31,7 +31,6 @@ const Index = () => {
   });
 
   const handleStreamingError = (error: string) => {
-    // istanbul ignore next - callback only invoked by useStreamingChat hook on error
     toast.error(error);
   };
 
