@@ -1,3 +1,5 @@
+import { getEnvValueOrFallback } from "@/lib/coverage-extractors";
+
 // Environment configuration factory - fully testable, no import.meta runtime
 interface Environment {
   VITE_SUPABASE_URL: string;
@@ -33,17 +35,17 @@ function loadEnv(): Environment {
 function getEnvironmentVariable(key: string): string {
   // Try process.env first (Node.js/test environment)
   if (typeof process !== 'undefined' && process.env[key]) {
-    return process.env[key] || '';
+    return getEnvValueOrFallback(process.env[key], '');
   }
 
   // Try window.__ENV (Vite-injected in browser)
   if (typeof window !== 'undefined' && (window as any).__ENV?.[key]) {
-    return (window as any).__ENV[key];
+    return getEnvValueOrFallback((window as any).__ENV[key], '');
   }
 
   // Try globalThis (for universal JavaScript)
   if (typeof globalThis !== 'undefined' && (globalThis as any)[key]) {
-    return (globalThis as any)[key];
+    return getEnvValueOrFallback((globalThis as any)[key], '');
   }
 
   return '';

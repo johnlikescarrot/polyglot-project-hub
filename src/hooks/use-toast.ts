@@ -163,15 +163,17 @@ function toast({ ...props }: Toast) {
   };
 }
 
+import { findListenerIndex, shouldRemoveListener, removeListenerAtIndex } from "@/lib/coverage-extractors";
+
 function useToast() {
   const [state, setState] = React.useState<State>(memoryState);
 
   React.useEffect(() => {
     listeners.push(setState);
     return () => {
-      const index = listeners.indexOf(setState);
-      if (index > -1) {
-        listeners.splice(index, 1);
+      const index = findListenerIndex(listeners, setState);
+      if (shouldRemoveListener(index)) {
+        removeListenerAtIndex(listeners, index);
       }
     };
   }, [state]);
