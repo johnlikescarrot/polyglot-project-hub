@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1764577198042" clover="3.2.0">
-  <project timestamp="1764577198042" name="All files">
+<coverage generated="1764577468609" clover="3.2.0">
+  <project timestamp="1764577468609" name="All files">
     <metrics statements="563" coveredstatements="555" conditionals="289" coveredconditionals="270" methods="231" coveredmethods="222" elements="1083" coveredelements="1047" complexity="0" loc="563" ncloc="563" packages="6" files="27" classes="27"/>
     <package name="src">
       <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -39,22 +39,22 @@
       <metrics statements="120" coveredstatements="115" conditionals="61" coveredconditionals="59" methods="40" coveredmethods="36"/>
       <file name="ChatInput.tsx" path="/home/runner/workspace/src/components/research/ChatInput.tsx">
         <metrics statements="16" coveredstatements="16" conditionals="10" coveredconditionals="9" methods="4" coveredmethods="4"/>
-        <line num="1" count="9" type="stmt"/>
-        <line num="2" count="9" type="stmt"/>
-        <line num="3" count="9" type="stmt"/>
-        <line num="4" count="9" type="stmt"/>
-        <line num="11" count="9" type="stmt"/>
-        <line num="12" count="117" type="stmt"/>
-        <line num="14" count="117" type="stmt"/>
-        <line num="15" count="12" type="cond" truecount="3" falsecount="1"/>
-        <line num="16" count="12" type="stmt"/>
-        <line num="17" count="12" type="stmt"/>
-        <line num="21" count="117" type="stmt"/>
+        <line num="1" count="10" type="stmt"/>
+        <line num="2" count="10" type="stmt"/>
+        <line num="3" count="10" type="stmt"/>
+        <line num="4" count="10" type="stmt"/>
+        <line num="11" count="10" type="stmt"/>
+        <line num="12" count="131" type="stmt"/>
+        <line num="14" count="131" type="stmt"/>
+        <line num="15" count="15" type="cond" truecount="3" falsecount="1"/>
+        <line num="16" count="15" type="stmt"/>
+        <line num="17" count="15" type="stmt"/>
+        <line num="21" count="131" type="stmt"/>
         <line num="22" count="33" type="cond" truecount="4" falsecount="0"/>
         <line num="23" count="3" type="stmt"/>
         <line num="24" count="3" type="stmt"/>
-        <line num="28" count="117" type="stmt"/>
-        <line num="32" count="43" type="stmt"/>
+        <line num="28" count="131" type="stmt"/>
+        <line num="32" count="48" type="stmt"/>
       </file>
       <file name="ChatMessage.tsx" path="/home/runner/workspace/src/components/research/ChatMessage.tsx">
         <metrics statements="8" coveredstatements="8" conditionals="13" coveredconditionals="13" methods="1" coveredmethods="1"/>
@@ -615,10 +615,10 @@
       </file>
       <file name="utils.ts" path="/home/runner/workspace/src/lib/utils.ts">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="22" type="stmt"/>
-        <line num="2" count="22" type="stmt"/>
-        <line num="4" count="22" type="stmt"/>
-        <line num="5" count="1967" type="stmt"/>
+        <line num="1" count="23" type="stmt"/>
+        <line num="2" count="23" type="stmt"/>
+        <line num="4" count="23" type="stmt"/>
+        <line num="5" count="1995" type="stmt"/>
       </file>
     </package>
     <package name="src.pages">
