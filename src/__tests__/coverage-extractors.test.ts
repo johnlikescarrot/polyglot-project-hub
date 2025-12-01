@@ -59,7 +59,8 @@ describe('Coverage Extractors - 100% Branch Coverage', () => {
     test('shouldRemoveListener: F', () => { expect(extractors.shouldRemoveListener(-1)).toBe(false); });
     test('removeListenerAtIndex: removes', () => {
       const listeners = [1, 2, 3];
-      expect(extractors.removeListenerAtIndex(listeners, 1)).toHaveLength(2);
+      extractors.removeListenerAtIndex(listeners, 1);
+      expect(listeners).toHaveLength(2);
     });
   });
 

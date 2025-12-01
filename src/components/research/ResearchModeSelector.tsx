@@ -20,6 +20,12 @@ import {
 import { Settings2, Layers, FileText, BookOpen, Search } from "lucide-react";
 import { ReportType, Tone, REPORT_FORMATS } from "@/lib/researchTypes";
 import { getModeButtonClass, shouldShowModeDescription, getModeDescription } from "./research-mode-functions";
+import {
+  createReportFormatHandler,
+  createToneHandler,
+  createLanguageHandler,
+  createTotalWordsHandler,
+} from "@/lib/coverage-extractors";
 
 interface ResearchModeSettings {
   reportType: ReportType;
@@ -87,6 +93,12 @@ export function ResearchModeSelector({
     onSettingsChange({ ...settings, ...updates });
   };
 
+  // Create handler functions using extractors
+  const handleFormatChange = createReportFormatHandler(updateSettings);
+  const handleToneChange = createToneHandler(updateSettings);
+  const handleLanguageChange = createLanguageHandler(updateSettings);
+  const handleWordsChange = createTotalWordsHandler(updateSettings);
+
   const currentMode = RESEARCH_MODES.find((m) => m.value === settings.reportType);
 
   return (
@@ -138,7 +150,7 @@ export function ResearchModeSelector({
             <Label htmlFor="format">Citation Format</Label>
             <Select
               value={settings.reportFormat}
-              onValueChange={(value) => updateSettings({ reportFormat: value })}
+              onValueChange={handleFormatChange}
             >
               <SelectTrigger id="format">
                 <SelectValue />
@@ -158,7 +170,7 @@ export function ResearchModeSelector({
             <Label htmlFor="tone">Writing Tone</Label>
             <Select
               value={settings.tone}
-              onValueChange={(value) => updateSettings({ tone: value as Tone })}
+              onValueChange={handleToneChange}
             >
               <SelectTrigger id="tone">
                 <SelectValue />
@@ -183,7 +195,7 @@ export function ResearchModeSelector({
             </div>
             <Slider
               value={[settings.totalWords]}
-              onValueChange={([value]) => updateSettings({ totalWords: value })}
+              onValueChange={handleWordsChange}
               min={500}
               max={5000}
               step={250}
@@ -201,7 +213,7 @@ export function ResearchModeSelector({
             <Label htmlFor="language">Output Language</Label>
             <Select
               value={settings.language}
-              onValueChange={(value) => updateSettings({ language: value })}
+              onValueChange={handleLanguageChange}
             >
               <SelectTrigger id="language">
                 <SelectValue />

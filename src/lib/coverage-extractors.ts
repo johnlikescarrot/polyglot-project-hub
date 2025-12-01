@@ -203,6 +203,26 @@ export function clampSliderValue(value: number, min: number, max: number): numbe
   return value;
 }
 
+// ===== ResearchModeSelector handler factories =====
+export function createReportFormatHandler(updateSettings: (updates: any) => void): (value: string) => void {
+  return (value: string) => updateSettings({ reportFormat: value });
+}
+
+export function createToneHandler(updateSettings: (updates: any) => void): (value: string) => void {
+  return (value: string) => updateSettings({ tone: value });
+}
+
+export function createLanguageHandler(updateSettings: (updates: any) => void): (value: string) => void {
+  return (value: string) => updateSettings({ language: value });
+}
+
+export function createTotalWordsHandler(updateSettings: (updates: any) => void): (values: number[]) => void {
+  return (values: number[]) => {
+    const value = values[0];
+    updateSettings({ totalWords: value });
+  };
+}
+
 // ===== All comparison operators - Explicit branch functions =====
 
 // === operator
