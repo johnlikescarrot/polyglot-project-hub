@@ -4,31 +4,34 @@ import { BrowserRouter } from 'react-router-dom';
 import NotFound from '@/pages/NotFound';
 
 describe('NotFound Page', () => {
+  const renderNotFound = () => render(<BrowserRouter><NotFound /></BrowserRouter>);
+
   test('renders 404 heading', () => {
-    const { container } = render(
-      <BrowserRouter>
-        <NotFound />
-      </BrowserRouter>
-    );
+    const { container } = renderNotFound();
     expect(container.textContent).toContain('404');
   });
 
   test('renders error message', () => {
-    const { container } = render(
-      <BrowserRouter>
-        <NotFound />
-      </BrowserRouter>
-    );
+    const { container } = renderNotFound();
     expect(container.textContent).toContain('Page not found');
   });
 
-  test('has home link', () => {
-    const { container } = render(
-      <BrowserRouter>
-        <NotFound />
-      </BrowserRouter>
-    );
-    const link = container.querySelector('a');
-    expect(link).toHaveAttribute('href', '/');
+  test('renders home link', () => {
+    const { container } = renderNotFound();
+    const link = container.querySelector('a[href="/"]');
+    expect(link).toBeInTheDocument();
+  });
+
+  test('has correct styling classes', () => {
+    const { container } = renderNotFound();
+    expect(container.querySelector('.min-h-screen')).toBeInTheDocument();
+    expect(container.querySelector('.text-center')).toBeInTheDocument();
+  });
+
+  test('logs error on mount', () => {
+    const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    renderNotFound();
+    expect(consoleSpy).toHaveBeenCalled();
+    consoleSpy.mockRestore();
   });
 });

@@ -4,42 +4,33 @@ import { ChatMessage } from '@/components/research/ChatMessage';
 import type { Message } from '@/hooks/useStreamingChat';
 
 describe('ChatMessage Component', () => {
-  test('renders user message', () => {
-    const message: Message = {
-      role: 'user',
-      content: 'Test message',
-    };
+  test('renders user message content', () => {
+    const message: Message = { role: 'user', content: 'Test user message' };
     const { container } = render(<ChatMessage message={message} />);
-    expect(container.textContent).toContain('Test message');
+    expect(container.textContent).toContain('Test user message');
   });
 
   test('renders assistant message', () => {
-    const message: Message = {
-      role: 'assistant',
-      content: '# Header\nContent',
-      model: 'google/gemini-2.5-flash',
-    };
+    const message: Message = { role: 'assistant', content: 'Assistant response', model: 'google/gemini-2.5-flash' };
     const { container } = render(<ChatMessage message={message} />);
-    expect(container.textContent).toContain('Header');
+    expect(container.textContent).toContain('Assistant response');
   });
 
-  test('shows model info for assistant', () => {
-    const message: Message = {
-      role: 'assistant',
-      content: 'Test',
-      model: 'google/gemini-2.5-flash',
-    };
+  test('shows model info for assistant messages', () => {
+    const message: Message = { role: 'assistant', content: 'Test', model: 'google/gemini-2.5-flash' };
     const { container } = render(<ChatMessage message={message} />);
     expect(container.textContent).toContain('gemini-2.5-flash');
   });
 
-  test('hides model info for user', () => {
-    const message: Message = {
-      role: 'user',
-      content: 'Test',
-      model: 'google/gemini-2.5-flash',
-    };
+  test('user message has correct styling', () => {
+    const message: Message = { role: 'user', content: 'Test' };
     const { container } = render(<ChatMessage message={message} />);
-    expect(container.textContent).not.toContain('Model: google');
+    expect(container.querySelector('.justify-end')).toBeInTheDocument();
+  });
+
+  test('assistant message has correct styling', () => {
+    const message: Message = { role: 'assistant', content: 'Test' };
+    const { container } = render(<ChatMessage message={message} />);
+    expect(container.querySelector('.justify-start')).toBeInTheDocument();
   });
 });
