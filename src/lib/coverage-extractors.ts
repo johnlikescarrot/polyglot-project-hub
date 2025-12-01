@@ -192,6 +192,10 @@ export function isEventTypeChange(eventType: string): boolean {
   return eventType === 'change';
 }
 
+export function isEventTypeNotChange(eventType: string): boolean {
+  return eventType !== 'change';
+}
+
 // ===== Slider value validation =====
 export function validateSliderValue(value: number, min: number, max: number): boolean {
   return value >= min && value <= max;
