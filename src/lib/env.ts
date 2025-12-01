@@ -1,20 +1,29 @@
-// Environment configuration with Jest compatibility
+// Environment configuration with CommonJS Jest compatibility
 let cached: { VITE_SUPABASE_URL: string; VITE_SUPABASE_PUBLISHABLE_KEY: string } | null = null;
 
 export const getEnv = () => {
   if (!cached) {
-    try {
-      // Try to use import.meta.env (production/Vite)
+    // Get from global mock first (Jest setupTests.ts provides this)
+    const globalMeta = (globalThis as any).import?.meta?.env;
+    if (globalMeta) {
       cached = {
-        VITE_SUPABASE_URL: (import.meta as any).env?.VITE_SUPABASE_URL || (global as any).import?.meta?.env?.VITE_SUPABASE_URL || '',
-        VITE_SUPABASE_PUBLISHABLE_KEY: (import.meta as any).env?.VITE_SUPABASE_PUBLISHABLE_KEY || (global as any).import?.meta?.env?.VITE_SUPABASE_PUBLISHABLE_KEY || '',
+        VITE_SUPABASE_URL: globalMeta.VITE_SUPABASE_URL || '',
+        VITE_SUPABASE_PUBLISHABLE_KEY: globalMeta.VITE_SUPABASE_PUBLISHABLE_KEY || '',
       };
-    } catch {
-      // Fallback for Jest environment
-      cached = {
-        VITE_SUPABASE_URL: (global as any).import?.meta?.env?.VITE_SUPABASE_URL || '',
-        VITE_SUPABASE_PUBLISHABLE_KEY: (global as any).import?.meta?.env?.VITE_SUPABASE_PUBLISHABLE_KEY || '',
-      };
+    } else {
+      // Fallback for Vite (production) - access dynamically at runtime
+      try {
+        const viteEnv = (import.meta as any).env;
+        cached = {
+          VITE_SUPABASE_URL: viteEnv?.VITE_SUPABASE_URL || '',
+          VITE_SUPABASE_PUBLISHABLE_KEY: viteEnv?.VITE_SUPABASE_PUBLISHABLE_KEY || '',
+        };
+      } catch {
+        cached = {
+          VITE_SUPABASE_URL: '',
+          VITE_SUPABASE_PUBLISHABLE_KEY: '',
+        };
+      }
     }
   }
   return cached;
