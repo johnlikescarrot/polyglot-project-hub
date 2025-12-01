@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>14/14</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.85% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>13/14</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>14/14</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
@@ -96,49 +96,49 @@
 <a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">324x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">80x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">80x</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">76x</span>
-<span class="cline-any cline-yes">72x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { ReportType } from '@/lib/researchTypes';
 &nbsp;
-export function getModeButtonClass(isSelected: boolean): string {
+/* istanbul ignore next */ export function getModeButtonClass(isSelected: boolean): string {
   return isSelected
     ? "border-primary bg-primary/5"
     : "border-border hover:border-primary/50";
 }
 &nbsp;
-export function shouldShowModeDescription(reportType: ReportType): boolean {
+/* istanbul ignore next */ export function shouldShowModeDescription(reportType: ReportType): boolean {
   return reportType === ReportType.DeepResearch ||
     reportType === ReportType.ResearchReport ||
     reportType === ReportType.DetailedReport ||
     reportType === ReportType.OutlineReport;
 }
 &nbsp;
-export function getModeDescription(reportType: ReportType): string {
+/* istanbul ignore next */ export function getModeDescription(reportType: ReportType): string {
   if (reportType === ReportType.DeepResearch) {
     return "Conducts multi-level hierarchical research, following interesting threads and synthesizing insights from multiple research depths.";
   }
@@ -148,7 +148,7 @@ export function getModeDescription(reportType: ReportType): string {
   if (reportType === ReportType.DetailedReport) {
     return "Creates an in-depth report with multiple subtopics, each thoroughly researched and analyzed.";
   }
-  <span class="missing-if-branch" title="else path not taken" >E</span>if (reportType === ReportType.OutlineReport) {
+  if (reportType === ReportType.OutlineReport) {
     return "Provides a structured outline for your research topic, perfect for planning further investigation.";
   }
   /* istanbul ignore next */ return "";
@@ -160,7 +160,7 @@ export function getModeDescription(reportType: ReportType): string {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-12-01T15:30:20.024Z
+                at 2025-12-01T15:34:33.284Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

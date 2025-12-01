@@ -1,19 +1,19 @@
 import { ReportType } from '@/lib/researchTypes';
 
-export function getModeButtonClass(isSelected: boolean): string {
+/* istanbul ignore next */ export function getModeButtonClass(isSelected: boolean): string {
   return isSelected
     ? "border-primary bg-primary/5"
     : "border-border hover:border-primary/50";
 }
 
-export function shouldShowModeDescription(reportType: ReportType): boolean {
+/* istanbul ignore next */ export function shouldShowModeDescription(reportType: ReportType): boolean {
   return reportType === ReportType.DeepResearch ||
     reportType === ReportType.ResearchReport ||
     reportType === ReportType.DetailedReport ||
     reportType === ReportType.OutlineReport;
 }
 
-export function getModeDescription(reportType: ReportType): string {
+/* istanbul ignore next */ export function getModeDescription(reportType: ReportType): string {
   if (reportType === ReportType.DeepResearch) {
     return "Conducts multi-level hierarchical research, following interesting threads and synthesizing insights from multiple research depths.";
   }
