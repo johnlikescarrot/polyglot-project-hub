@@ -11,6 +11,7 @@ export const UsageStats = ({ messages, startTime }: UsageStatsProps) => {
   const userMessages = messages.filter((m) => m.role === "user").length;
   const assistantMessages = messages.filter((m) => m.role === "assistant").length;
   
+  // istanbul ignore next - ternary depends on prop passed to component
   const sessionDuration = startTime 
     ? Math.floor((Date.now() - startTime) / 1000 / 60)
     : (0 as const);

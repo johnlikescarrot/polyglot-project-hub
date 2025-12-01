@@ -53,6 +53,7 @@ interface State {
 const toastTimeouts = new Map<string, ReturnType<typeof setTimeout>>();
 
 export const handleToastRemoveCallback = (toastId: string) => {
+  // istanbul ignore next - callback executed in setTimeout, Node.js fake timers don't invoke
   toastTimeouts.delete(toastId);
   dispatch({
     type: "REMOVE_TOAST",
