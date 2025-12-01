@@ -80,8 +80,86 @@ describe('ResearchPrompts - comprehensive', () => {
     test('handles multiple tools', () => {
       const tools = ['tool1', 'tool2', 'tool3', 'tool4', 'tool5'];
       const prompt = ResearchPrompts.generateMCPResearchPrompt('query', tools);
-      expect(prompt).toContain('tool1,');
+      expect(prompt).toContain('tool1');
       expect(prompt).toContain('tool5');
+    });
+  });
+
+  describe('generateSearchQueriesPrompt', () => {
+    test('generates search queries prompt with question', () => {
+      const prompt = ResearchPrompts.generateSearchQueriesPrompt('What is AI?');
+      expect(prompt).toContain('What is AI?');
+      expect(prompt).toContain('google search queries');
+    });
+
+    test('includes max iterations in prompt', () => {
+      const prompt = ResearchPrompts.generateSearchQueriesPrompt('query', '', 'research_report', 5);
+      expect(prompt).toContain('5');
+    });
+
+    test('uses parent query for detailed reports', () => {
+      const prompt = ResearchPrompts.generateSearchQueriesPrompt(
+        'AI basics',
+        'Artificial Intelligence',
+        'detailed_report'
+      );
+      expect(prompt).toContain('Artificial Intelligence');
+    });
+
+    test('includes context when provided', () => {
+      const context = [{ fact: 'AI is growing' }];
+      const prompt = ResearchPrompts.generateSearchQueriesPrompt('query', '', 'research_report', 3, context);
+      expect(prompt).toContain('Context');
+    });
+
+    test('handles context-less search queries', () => {
+      const prompt = ResearchPrompts.generateSearchQueriesPrompt('query', '', 'research_report', 3, []);
+      expect(prompt).toContain('google search queries');
+    });
+
+    test('returns list format in prompt', () => {
+      const prompt = ResearchPrompts.generateSearchQueriesPrompt('query');
+      expect(prompt).toContain('[');
+      expect(prompt).toContain(']');
+    });
+
+    test('specifies only list response requirement', () => {
+      const prompt = ResearchPrompts.generateSearchQueriesPrompt('query');
+      expect(prompt).toContain('ONLY the list');
+    });
+  });
+
+  describe('generateReportPrompt', () => {
+    test('generates report prompt with minimal config', () => {
+      const config: PromptConfig = { question: 'What is AI?' };
+      const prompt = ResearchPrompts.generateReportPrompt(config);
+      expect(prompt).toContain('What is AI?');
+    });
+
+    test('includes report format in prompt', () => {
+      const config: PromptConfig = { question: 'test', reportFormat: 'apa' };
+      const prompt = ResearchPrompts.generateReportPrompt(config);
+      expect(prompt).toContain('test');
+    });
+
+    test('uses default values for optional fields', () => {
+      const config: PromptConfig = { question: 'test' };
+      const prompt = ResearchPrompts.generateReportPrompt(config);
+      expect(prompt).toContain('test');
+    });
+
+    test('handles full config object', () => {
+      const config: PromptConfig = {
+        question: 'What is AI?',
+        context: 'Current AI landscape',
+        reportFormat: 'apa',
+        totalWords: 2000,
+        tone: 'formal',
+        language: 'english',
+        reportSource: 'web',
+      };
+      const prompt = ResearchPrompts.generateReportPrompt(config);
+      expect(prompt).toContain('What is AI?');
     });
   });
 

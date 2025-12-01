@@ -52,10 +52,10 @@ describe('ResearchModeSelector - comprehensive', () => {
 
     reportTypes.forEach(type => {
       const settings = { ...mockSettings, reportType: type };
-      const { container } = render(
+      const result = render(
         <ResearchModeSelector settings={settings} onSettingsChange={jest.fn()} />
       );
-      expect(container).toBeInTheDocument();
+      expect(result.container).toBeInTheDocument();
     });
   });
 
@@ -64,10 +64,10 @@ describe('ResearchModeSelector - comprehensive', () => {
 
     tones.forEach(tone => {
       const settings = { ...mockSettings, tone };
-      const { container } = render(
+      const result = render(
         <ResearchModeSelector settings={settings} onSettingsChange={jest.fn()} />
       );
-      expect(container).toBeInTheDocument();
+      expect(result.container).toBeInTheDocument();
     });
   });
 
@@ -87,15 +87,15 @@ describe('ResearchModeSelector - comprehensive', () => {
       totalWords: 2000,
       language: 'spanish',
     };
-    const { container } = render(
+    const result = render(
       <ResearchModeSelector settings={settings} onSettingsChange={jest.fn()} />
     );
-    expect(container).toBeInTheDocument();
+    expect(result.container).toBeInTheDocument();
   });
 
   test('handles multiple setting changes', () => {
     const onChange = jest.fn();
-    const { rerender } = render(
+    const { rerender, container } = render(
       <ResearchModeSelector settings={mockSettings} onSettingsChange={onChange} />
     );
     
