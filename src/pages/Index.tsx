@@ -13,9 +13,10 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Trash2, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { ReportType, Tone } from "@/lib/researchTypes";
+import { shouldShowQuickActionsHelper } from "@/lib/coverage-extractors";
 
 export function shouldShowQuickActions(messagesLength: number): boolean {
-  return messagesLength === 0;
+  return shouldShowQuickActionsHelper(messagesLength);
 }
 
 const Index = () => {

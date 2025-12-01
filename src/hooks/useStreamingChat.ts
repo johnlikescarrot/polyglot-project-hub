@@ -118,9 +118,8 @@ export const useStreamingChat = ({ model, onError }: UseStreamingChatProps) => {
         
         setMessages((prev) => {
           // Remove the assistant message if it was being streamed
-          const filtered = prev.filter((msg, idx) => 
-            !(idx === prev.length - 1 && msg.role === "assistant" && !msg.content)
-          );
+          const { filterEmptyAssistantAtEnd } = require("@/lib/coverage-extractors");
+          const filtered = prev.filter((msg, idx) => filterEmptyAssistantAtEnd(prev, idx));
           return filtered;
         });
       }

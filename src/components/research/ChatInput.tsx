@@ -2,6 +2,7 @@ import { useState, KeyboardEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Send } from "lucide-react";
+import { validateMessageForSend, shouldDisableSendButton } from "@/lib/coverage-extractors";
 
 interface ChatInputProps {
   onSend: (message: string) => void;
@@ -12,7 +13,7 @@ export const ChatInput = ({ onSend, disabled }: ChatInputProps) => {
   const [message, setMessage] = useState("");
 
   const handleSend = () => {
-    if (message.trim() && !disabled) {
+    if (validateMessageForSend(message, disabled)) {
       onSend(message.trim());
       setMessage("");
     }
@@ -37,7 +38,7 @@ export const ChatInput = ({ onSend, disabled }: ChatInputProps) => {
       />
       <Button
         onClick={handleSend}
-        disabled={disabled || !message.trim()}
+        disabled={shouldDisableSendButton(message, disabled)}
         size="icon"
         className="h-[60px] w-[60px]"
       >
