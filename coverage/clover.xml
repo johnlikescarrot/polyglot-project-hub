@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1764570020311" clover="3.2.0">
-  <project timestamp="1764570020312" name="All files">
-    <metrics statements="316" coveredstatements="9" conditionals="169" coveredconditionals="0" methods="105" coveredmethods="5" elements="590" coveredelements="14" complexity="0" loc="316" ncloc="316" packages="6" files="18" classes="18"/>
+<coverage generated="1764570131415" clover="3.2.0">
+  <project timestamp="1764570131416" name="All files">
+    <metrics statements="314" coveredstatements="9" conditionals="165" coveredconditionals="0" methods="105" coveredmethods="5" elements="584" coveredelements="14" complexity="0" loc="314" ncloc="314" packages="6" files="18" classes="18"/>
     <package name="src">
       <metrics statements="11" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="App.tsx" path="/home/runner/workspace/src/App.tsx">
@@ -20,14 +20,13 @@
       </file>
     </package>
     <package name="src.components">
-      <metrics statements="9" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <metrics statements="8" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
       <file name="NavLink.tsx" path="/home/runner/workspace/src/components/NavLink.tsx">
-        <metrics statements="9" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <metrics statements="8" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
         <line num="18" count="0" type="cond" truecount="0" falsecount="4"/>
         <line num="26" count="0" type="stmt"/>
@@ -35,7 +34,7 @@
       </file>
     </package>
     <package name="src.components.research">
-      <metrics statements="104" coveredstatements="0" conditionals="60" coveredconditionals="0" methods="37" coveredmethods="0"/>
+      <metrics statements="104" coveredstatements="0" conditionals="56" coveredconditionals="0" methods="37" coveredmethods="0"/>
       <file name="ChatInput.tsx" path="/home/runner/workspace/src/components/research/ChatInput.tsx">
         <metrics statements="16" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
@@ -67,7 +66,7 @@
         <line num="15" count="0" type="stmt"/>
       </file>
       <file name="KeyboardShortcuts.tsx" path="/home/runner/workspace/src/components/research/KeyboardShortcuts.tsx">
-        <metrics statements="17" coveredstatements="0" conditionals="9" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <metrics statements="17" coveredstatements="0" conditionals="5" coveredconditionals="0" methods="6" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
@@ -78,7 +77,7 @@
         <line num="13" count="0" type="stmt"/>
         <line num="15" count="0" type="cond" truecount="0" falsecount="5"/>
         <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="17" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
@@ -166,7 +165,7 @@
       </file>
     </package>
     <package name="src.hooks">
-      <metrics statements="66" coveredstatements="0" conditionals="20" coveredconditionals="0" methods="22" coveredmethods="0"/>
+      <metrics statements="65" coveredstatements="0" conditionals="20" coveredconditionals="0" methods="22" coveredmethods="0"/>
       <file name="use-mobile.tsx" path="/home/runner/workspace/src/hooks/use-mobile.tsx">
         <metrics statements="12" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
@@ -183,7 +182,7 @@
         <line num="18" count="0" type="stmt"/>
       </file>
       <file name="use-toast.ts" path="/home/runner/workspace/src/hooks/use-toast.ts">
-        <metrics statements="54" coveredstatements="0" conditionals="20" coveredconditionals="0" methods="18" coveredmethods="0"/>
+        <metrics statements="53" coveredstatements="0" conditionals="20" coveredconditionals="0" methods="18" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
@@ -220,7 +219,6 @@
         <line num="129" count="0" type="stmt"/>
         <line num="130" count="0" type="stmt"/>
         <line num="131" count="0" type="stmt"/>
-        <line num="137" count="0" type="stmt"/>
         <line num="138" count="0" type="stmt"/>
         <line num="140" count="0" type="stmt"/>
         <line num="141" count="0" type="stmt"/>

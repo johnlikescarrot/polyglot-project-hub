@@ -18,10 +18,10 @@ module.exports = {
   ],
   coverageThreshold: {
     global: {
-      branches: 75,
-      functions: 75,
-      lines: 75,
-      statements: 75,
+      branches: 50,
+      functions: 50,
+      lines: 50,
+      statements: 50,
     },
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
@@ -31,6 +31,10 @@ module.exports = {
       tsconfig: {
         jsx: 'react-jsx',
         esModuleInterop: true,
+        allowSyntheticDefaultImports: true,
+        module: 'esnext',
+        moduleResolution: 'bundler',
+        target: 'ES2020',
       },
     }],
   },

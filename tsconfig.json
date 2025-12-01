@@ -12,6 +12,10 @@
     "allowJs": true,
     "noUnusedLocals": false,
     "strictNullChecks": false,
-    "types": ["jest", "@testing-library/jest-dom", "node"]
+    "types": ["jest", "@testing-library/jest-dom", "node"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "resolveJsonModule": true
   }
 }
