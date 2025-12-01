@@ -277,6 +277,22 @@ export function andFalseFalse(): boolean {
   return false && false;
 }
 
+export function nestedTernaryTT(): string {
+  return true ? (true ? 'yes-yes' : 'yes-no') : (true ? 'no-yes' : 'no-no');
+}
+
+export function nestedTernaryTF(): string {
+  return true ? (false ? 'yes-yes' : 'yes-no') : (true ? 'no-yes' : 'no-no');
+}
+
+export function nestedTernaryFT(): string {
+  return false ? (true ? 'yes-yes' : 'yes-no') : (true ? 'no-yes' : 'no-no');
+}
+
+export function nestedTernaryFF(): string {
+  return false ? (true ? 'yes-yes' : 'yes-no') : (false ? 'no-yes' : 'no-no');
+}
+
 // OR operator - all 4 combinations
 export function orTrueTrue(): boolean {
   return true || true;
