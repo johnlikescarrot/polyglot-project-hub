@@ -30,11 +30,13 @@ const Index = () => {
     language: "english",
   });
 
+  const handleStreamingError = (error: string) => {
+    toast.error(error);
+  };
+
   const { messages, isLoading, sendMessage, clearMessages } = useStreamingChat({
     model: selectedModel,
-    onError: (error) => {
-      toast.error(error);
-    },
+    onError: handleStreamingError,
   });
 
   return (
