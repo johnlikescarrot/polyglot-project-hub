@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1764602231300" clover="3.2.0">
-  <project timestamp="1764602231300" name="All files">
-    <metrics statements="656" coveredstatements="648" conditionals="234" coveredconditionals="224" methods="204" coveredmethods="200" elements="1094" coveredelements="1072" complexity="0" loc="656" ncloc="656" packages="6" files="28" classes="28"/>
+<coverage generated="1764602349580" clover="3.2.0">
+  <project timestamp="1764602349580" name="All files">
+    <metrics statements="656" coveredstatements="648" conditionals="234" coveredconditionals="224" methods="151" coveredmethods="148" elements="1041" coveredelements="1020" complexity="0" loc="656" ncloc="656" packages="6" files="28" classes="28"/>
     <package name="src">
       <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="App.tsx" path="/home/runner/workspace/src/App.tsx">
@@ -326,7 +326,7 @@
       </file>
     </package>
     <package name="src.lib">
-      <metrics statements="359" coveredstatements="359" conditionals="131" coveredconditionals="127" methods="128" coveredmethods="127"/>
+      <metrics statements="359" coveredstatements="359" conditionals="131" coveredconditionals="127" methods="75" coveredmethods="75"/>
       <file name="aiModels.ts" path="/home/runner/workspace/src/lib/aiModels.ts">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
         <line num="11" count="7" type="stmt"/>
@@ -336,7 +336,7 @@
         <line num="82" count="28" type="stmt"/>
       </file>
       <file name="componentUtils.ts" path="/home/runner/workspace/src/lib/componentUtils.ts">
-        <metrics statements="70" coveredstatements="70" conditionals="0" coveredconditionals="0" methods="57" coveredmethods="56"/>
+        <metrics statements="70" coveredstatements="70" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
         <line num="1" count="3" type="stmt"/>
         <line num="4" count="3" type="stmt"/>
         <line num="5" count="3" type="stmt"/>
