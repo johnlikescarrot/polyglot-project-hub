@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1764602698694" clover="3.2.0">
-  <project timestamp="1764602698694" name="All files">
+<coverage generated="1764602859773" clover="3.2.0">
+  <project timestamp="1764602859773" name="All files">
     <metrics statements="654" coveredstatements="646" conditionals="231" coveredconditionals="223" methods="151" coveredmethods="148" elements="1036" coveredelements="1017" complexity="0" loc="654" ncloc="654" packages="6" files="28" classes="28"/>
     <package name="src">
       <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -142,10 +142,10 @@
         <line num="104" count="81" type="stmt"/>
         <line num="126" count="324" type="stmt"/>
         <line num="127" count="324" type="stmt"/>
-        <line num="130" count="0" type="stmt"/>
-        <line num="160" count="486" type="stmt"/>
-        <line num="180" count="405" type="stmt"/>
-        <line num="223" count="405" type="stmt"/>
+        <line num="131" count="0" type="stmt"/>
+        <line num="161" count="486" type="stmt"/>
+        <line num="181" count="405" type="stmt"/>
+        <line num="224" count="405" type="stmt"/>
       </file>
       <file name="UsageStats.tsx" path="/home/runner/workspace/src/components/research/UsageStats.tsx">
         <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>

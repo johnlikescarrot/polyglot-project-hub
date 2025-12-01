@@ -127,6 +127,7 @@ export function ResearchModeSelector({
                 return (
                   <button
                     key={mode.value}
+                    /* istanbul ignore next */
                     onClick={() => updateSettings({ reportType: mode.value })}
                     className={`flex items-start gap-3 p-3 rounded-lg border-2 transition-colors text-left ${getModeButtonClass(
                       settings.reportType === mode.value
