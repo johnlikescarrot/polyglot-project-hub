@@ -28,14 +28,8 @@ module.exports = {
   testTimeout: 10000,
   transform: {
     '^.+\\.tsx?$': ['ts-jest', {
-      tsconfig: {
-        jsx: 'react-jsx',
-        esModuleInterop: true,
-        allowSyntheticDefaultImports: true,
-        module: 'esnext',
-        moduleResolution: 'bundler',
-        target: 'ES2020',
-      },
+      tsconfig: 'tsconfig.jest.json',
+      isolatedModules: true,
     }],
   },
 };
