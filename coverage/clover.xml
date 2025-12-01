@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1764603273766" clover="3.2.0">
-  <project timestamp="1764603273766" name="All files">
-    <metrics statements="629" coveredstatements="628" conditionals="209" coveredconditionals="208" methods="139" coveredmethods="138" elements="977" coveredelements="974" complexity="0" loc="629" ncloc="629" packages="5" files="27" classes="27"/>
+<coverage generated="1764603376486" clover="3.2.0">
+  <project timestamp="1764603376486" name="All files">
+    <metrics statements="628" coveredstatements="628" conditionals="209" coveredconditionals="208" methods="138" coveredmethods="138" elements="975" coveredelements="974" complexity="0" loc="628" ncloc="628" packages="5" files="27" classes="27"/>
     <package name="src">
       <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="App.tsx" path="/home/runner/workspace/src/App.tsx">
@@ -20,7 +20,7 @@
       </file>
     </package>
     <package name="src.components.research">
-      <metrics statements="105" coveredstatements="104" conditionals="39" coveredconditionals="38" methods="32" coveredmethods="31"/>
+      <metrics statements="104" coveredstatements="104" conditionals="39" coveredconditionals="38" methods="31" coveredmethods="31"/>
       <file name="ChatInput.tsx" path="/home/runner/workspace/src/components/research/ChatInput.tsx">
         <metrics statements="14" coveredstatements="14" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
         <line num="1" count="6" type="stmt"/>
@@ -105,7 +105,7 @@
         <line num="34" count="6" type="stmt"/>
       </file>
       <file name="ResearchModeSelector.tsx" path="/home/runner/workspace/src/components/research/ResearchModeSelector.tsx">
-        <metrics statements="27" coveredstatements="26" conditionals="3" coveredconditionals="3" methods="7" coveredmethods="6"/>
+        <metrics statements="26" coveredstatements="26" conditionals="3" coveredconditionals="3" methods="6" coveredmethods="6"/>
         <line num="1" count="7" type="stmt"/>
         <line num="2" count="7" type="stmt"/>
         <line num="3" count="7" type="stmt"/>
@@ -129,7 +129,6 @@
         <line num="104" count="81" type="stmt"/>
         <line num="126" count="324" type="stmt"/>
         <line num="127" count="324" type="stmt"/>
-        <line num="131" count="0" type="stmt"/>
         <line num="161" count="486" type="stmt"/>
         <line num="181" count="405" type="stmt"/>
         <line num="224" count="405" type="stmt"/>

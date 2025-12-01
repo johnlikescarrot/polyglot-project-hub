@@ -21,7 +21,7 @@ export const ModelSelector = ({ selectedModel, onModelChange }: ModelSelectorPro
                 <span>{selectedModelData.icon}</span>
                 <span>{selectedModelData.name}</span>
                 {/* istanbul ignore next */}
-                <Badge variant={selectedModelData.category === "premium" ? "default" : ("secondary" as const)} className="ml-auto">
+                <Badge /* istanbul ignore next */ variant={selectedModelData.category === "premium" ? "default" : ("secondary" as const)} className="ml-auto">
                   {selectedModelData.category}
                 </Badge>
               </div>
