@@ -17,21 +17,33 @@ interface RequestBody {
 }
 
 serve(async (req) => {
+  console.log("AI Research function called");
+  console.log("Method:", req.method);
+  
   if (req.method === "OPTIONS") {
+    console.log("Handling CORS preflight");
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const { messages, model, stream = true }: RequestBody = await req.json();
+    const body = await req.json();
+    console.log("Request body:", JSON.stringify(body));
+    
+    const { messages, model, stream = true }: RequestBody = body;
 
     if (!messages || !model) {
+      console.error("Missing messages or model");
       throw new Error("Messages and model are required");
     }
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) {
+      console.error("LOVABLE_API_KEY not configured");
       throw new Error("LOVABLE_API_KEY is not configured");
     }
+
+    console.log("Using model:", model);
+    console.log("Stream mode:", stream);
 
     // Enhanced system prompt for comprehensive research
     const researchMessages: Message[] = [
@@ -82,6 +94,8 @@ Provide exceptional research quality in every response.`,
       ...messages,
     ];
 
+    console.log("Calling Lovable AI gateway...");
+    
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -97,8 +111,11 @@ Provide exceptional research quality in every response.`,
       }),
     });
 
+    console.log("AI gateway response status:", response.status);
+
     if (!response.ok) {
       if (response.status === 429) {
+        console.error("Rate limit exceeded");
         return new Response(
           JSON.stringify({ error: "Rate limit exceeded. Please try again later." }),
           {
@@ -108,6 +125,7 @@ Provide exceptional research quality in every response.`,
         );
       }
       if (response.status === 402) {
+        console.error("Payment required");
         return new Response(
           JSON.stringify({ error: "Payment required. Please add credits to your workspace." }),
           {
@@ -127,6 +145,8 @@ Provide exceptional research quality in every response.`,
       );
     }
 
+    console.log("Streaming response back to client...");
+    
     if (stream) {
       return new Response(response.body, {
         headers: { ...corsHeaders, "Content-Type": "text/event-stream" },
