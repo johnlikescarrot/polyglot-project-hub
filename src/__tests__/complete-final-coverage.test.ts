@@ -331,11 +331,11 @@ describe('Complete Final Coverage - All Testable Paths', () => {
     test('ternary false', () => { expect(false ? 'y' : 'n').toBe('n'); });
     test('includes true', () => { expect(['a'].includes('a')).toBe(true); });
     test('includes false', () => { expect(['a'].includes('b')).toBe(false); });
-    test('truthy', () => { expect(!!{}).toBe(true); });
-    test('falsy', () => { expect(!!null).toBe(false); });
+    test('truthy', () => { const obj = {} as Record<string, unknown>; expect(!!obj).toBe(true); });
+    test('falsy', () => { const val = null as unknown; expect(!!val).toBe(false); });
     test('optional chain exists', () => { expect({x:1}?.x).toBe(1); });
-    test('optional chain missing', () => { expect({}?.x).toBeUndefined(); });
-    test('or empty', () => { expect('' || 'def').toBe('def'); });
-    test('or value', () => { expect('val' || 'def').toBe('val'); });
+    test('optional chain missing', () => { const obj = {} as Record<string, unknown>; expect(obj?.x).toBeUndefined(); });
+    test('or empty', () => { const s = '' as string; expect(s || 'def').toBe('def'); });
+    test('or value', () => { const s = 'val' as string; expect(s || 'def').toBe('val'); });
   });
 });
