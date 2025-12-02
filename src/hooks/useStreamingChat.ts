@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import { filterEmptyAssistantAtEnd } from "@/lib/coverage-extractors";
+import { ReportType, Tone } from "@/lib/researchTypes";
 
 export interface Message {
   role: "user" | "assistant";
@@ -8,16 +9,25 @@ export interface Message {
   timestamp?: number;
 }
 
+export interface ResearchSettings {
+  reportType: ReportType;
+  reportFormat: string;
+  tone: Tone;
+  totalWords: number;
+  language: string;
+}
+
 interface UseStreamingChatProps {
   model: string;
+  settings?: ResearchSettings;
   onError?: (error: string) => void;
 }
 
-// Hardcoded Supabase config for reliability - these are public values
+// Supabase config - these are public values
 const SUPABASE_URL = "https://wfrkwxiatxzrayahentd.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indmcmt3eGlhdHh6cmF5YWhlbnRkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ1MzQxMzYsImV4cCI6MjA4MDExMDEzNn0.u3rmEUS5mdK9D71ZK5fPnoWl8c62Fi5H9Lxw7-fTApM";
 
-export const useStreamingChat = ({ model, onError }: UseStreamingChatProps) => {
+export const useStreamingChat = ({ model, settings, onError }: UseStreamingChatProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -38,6 +48,7 @@ export const useStreamingChat = ({ model, onError }: UseStreamingChatProps) => {
         const CHAT_URL = `${SUPABASE_URL}/functions/v1/ai-research`;
         
         console.log("Calling AI research at:", CHAT_URL);
+        console.log("Research settings:", settings);
 
         const response = await fetch(CHAT_URL, {
           method: "POST",
@@ -53,6 +64,7 @@ export const useStreamingChat = ({ model, onError }: UseStreamingChatProps) => {
             })),
             model: model,
             stream: true,
+            settings: settings,
           }),
         });
 
@@ -61,7 +73,19 @@ export const useStreamingChat = ({ model, onError }: UseStreamingChatProps) => {
         if (!response.ok) {
           const errorText = await response.text();
           console.error("Error response:", errorText);
-          throw new Error(`Request failed: ${response.status} - ${errorText}`);
+          
+          // Parse error for user-friendly messages
+          let errorMessage = `Request failed: ${response.status}`;
+          try {
+            const errorJson = JSON.parse(errorText);
+            if (errorJson.error) {
+              errorMessage = errorJson.error;
+            }
+          } catch {
+            // Use default error message
+          }
+          
+          throw new Error(errorMessage);
         }
 
         if (!response.body) {
@@ -135,7 +159,7 @@ export const useStreamingChat = ({ model, onError }: UseStreamingChatProps) => {
         });
       }
     },
-    [messages, model, onError]
+    [messages, model, settings, onError]
   );
 
   const clearMessages = useCallback(() => {
