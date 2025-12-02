@@ -7,10 +7,10 @@ import { ResearchHistory } from "@/components/research/ResearchHistory";
 import { KeyboardShortcuts } from "@/components/research/KeyboardShortcuts";
 import { UsageStats } from "@/components/research/UsageStats";
 import { ResearchModeSelector } from "@/components/research/ResearchModeSelector";
-import { useStreamingChat } from "@/hooks/useStreamingChat";
+import { useStreamingChat, ResearchSettings } from "@/hooks/useStreamingChat";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Trash2, Sparkles } from "lucide-react";
+import { Trash2, Sparkles, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { ReportType, Tone } from "@/lib/researchTypes";
 import { shouldShowQuickActionsHelper } from "@/lib/coverage-extractors";
@@ -22,7 +22,7 @@ export function shouldShowQuickActions(messagesLength: number): boolean {
 const Index = () => {
   const [selectedModel, setSelectedModel] = useState("google/gemini-2.5-flash");
   const [sessionStartTime] = useState(Date.now());
-  const [researchSettings, setResearchSettings] = useState({
+  const [researchSettings, setResearchSettings] = useState<ResearchSettings>({
     reportType: ReportType.ResearchReport,
     reportFormat: "apa",
     tone: Tone.Objective,
@@ -36,8 +36,23 @@ const Index = () => {
 
   const { messages, isLoading, sendMessage, clearMessages } = useStreamingChat({
     model: selectedModel,
+    settings: researchSettings,
     onError: handleStreamingError,
   });
+
+  // Get the current mode label for display
+  const getModeLabel = () => {
+    switch (researchSettings.reportType) {
+      case ReportType.DeepResearch:
+        return "🔬 Deep Research";
+      case ReportType.DetailedReport:
+        return "📚 Detailed Report";
+      case ReportType.OutlineReport:
+        return "📝 Outline";
+      default:
+        return "✨ Standard Research";
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/5">
@@ -106,9 +121,12 @@ const Index = () => {
                   <div className="max-w-md">
                     <Sparkles className="h-16 w-16 mx-auto mb-4 text-primary opacity-50" />
                     <h2 className="text-2xl font-semibold mb-2">Start Deep Research</h2>
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground mb-4">
                       Powered by ALL gpt-researcher prompts • 7 AI models • Advanced research modes
                     </p>
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm">
+                      {getModeLabel()} Mode Active
+                    </div>
                   </div>
                 </div>
               ) : (
@@ -116,9 +134,10 @@ const Index = () => {
                   {messages.map((message, index) => (
                     <ChatMessage key={index} message={message} />
                   ))}
-                  {/* istanbul ignore next */ false && (
-                    <div className="flex items-center gap-2 text-muted-foreground">
-                      <div className="animate-pulse">Conducting deep research...</div>
+                  {isLoading && (
+                    <div className="flex items-center gap-2 text-muted-foreground p-4">
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      <span>Conducting {getModeLabel().toLowerCase()}...</span>
                     </div>
                   )}
                 </div>
