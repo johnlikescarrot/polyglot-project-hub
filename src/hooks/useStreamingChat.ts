@@ -1,5 +1,4 @@
 import { useState, useCallback } from "react";
-import { getEnv } from "@/lib/env";
 import { filterEmptyAssistantAtEnd } from "@/lib/coverage-extractors";
 
 export interface Message {
@@ -13,6 +12,10 @@ interface UseStreamingChatProps {
   model: string;
   onError?: (error: string) => void;
 }
+
+// Hardcoded Supabase config for reliability - these are public values
+const SUPABASE_URL = "https://wfrkwxiatxzrayahentd.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indmcmt3eGlhdHh6cmF5YWhlbnRkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ1MzQxMzYsImV4cCI6MjA4MDExMDEzNn0.u3rmEUS5mdK9D71ZK5fPnoWl8c62Fi5H9Lxw7-fTApM";
 
 export const useStreamingChat = ({ model, onError }: UseStreamingChatProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -32,25 +35,33 @@ export const useStreamingChat = ({ model, onError }: UseStreamingChatProps) => {
       let assistantContent = "";
 
       try {
-        const env = getEnv();
-        const CHAT_URL = `${env.VITE_SUPABASE_URL}/functions/v1/ai-research`;
+        const CHAT_URL = `${SUPABASE_URL}/functions/v1/ai-research`;
+        
+        console.log("Calling AI research at:", CHAT_URL);
 
         const response = await fetch(CHAT_URL, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+            "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
+            "apikey": SUPABASE_ANON_KEY,
           },
           body: JSON.stringify({
-            messages: [...messages, newUserMessage],
+            messages: [...messages, newUserMessage].map(m => ({
+              role: m.role,
+              content: m.content,
+            })),
             model: model,
             stream: true,
           }),
         });
 
+        console.log("Response status:", response.status);
+
         if (!response.ok) {
-          const errorData = await response.json().catch(() => ({}));
-          throw new Error(errorData.error || `Request failed: ${response.status}`);
+          const errorText = await response.text();
+          console.error("Error response:", errorText);
+          throw new Error(`Request failed: ${response.status} - ${errorText}`);
         }
 
         if (!response.body) {

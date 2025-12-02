@@ -33,12 +33,22 @@ function loadEnv(): Environment {
 }
 
 function getEnvironmentVariable(key: string): string {
-  // Try process.env first (Node.js/test environment)
-  if (typeof process !== 'undefined' && process.env[key]) {
+  // Try import.meta.env first (Vite browser environment)
+  try {
+    const viteEnv = (import.meta as any).env;
+    if (viteEnv && viteEnv[key]) {
+      return getEnvValueOrFallback(viteEnv[key], '');
+    }
+  } catch {
+    // import.meta not available (Node.js/test environment)
+  }
+
+  // Try process.env (Node.js/test environment)
+  if (typeof process !== 'undefined' && process.env && process.env[key]) {
     return getEnvValueOrFallback(process.env[key], '');
   }
 
-  // Try window.__ENV (Vite-injected in browser)
+  // Try window.__ENV (fallback for browser)
   if (typeof window !== 'undefined' && (window as any).__ENV?.[key]) {
     return getEnvValueOrFallback((window as any).__ENV[key], '');
   }
